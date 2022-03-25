@@ -3,7 +3,7 @@ title: "Matching Environmental Epidemiology"
 theme: theme.css
 description: |
   Matching Tutorial
-output_dir: "website_documents"
+output_dir: "docs"
 source_url: https://github.com/lzabrocki/tutorial_matching_envi_epi
 navbar:
   right:
