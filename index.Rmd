@@ -31,9 +31,21 @@ h1 {
 
 <DIV align="justify">
 
-# Tutorial's Structure
+Hello and welcome!
 
-The air pollution and health effects of cruise vessel traffic is a growing concern in the Mediterranean area. We propose a novel methodology based on high-frequency observational data to estimate the causal effects of maritime traffic on pollution. We apply this method to cruise traffic in Marseille, a large Mediterranean port city. Using a new pair-matching algorithm designed for time series data, we create hypothetical randomized experiments and estimate the change in air pollution caused by a short-term increase in cruise traffic. We carry out a randomization-based approach to quantify uncertainty and compute 95\% Fisherian intervals (FI) consistent with the matched data.
+This website gathers all the materials for the paper *Matching Methods for Environmental Epidemiology: A Tutorial* by [Tarik Benmarhnia](https://profiles.ucsd.edu/tarik.benmarhnia), [Marie-Abèle Bind](https://biostatistics.massgeneral.org/faculty/marie-abele-bind-phd/), and [Léo Zabrocki](https://lzabrocki.github.io/).
+
+
+Decrire ici le but du papier
+
+The website is structured as follows:
+
+* A PDF version of the current version of the paper is accessible through the <span style="color:#0471a6">Paper</span>.
+* The <span style="color:#0471a6">Data</span> tab describes the sources of the data and the definition of the variables. It also contains a detailed exploratory data analysis of the covariates balance.
+* The <span style="color:#0471a6">Standard Approach</span> tab presents results found with an outcome regression model.
+* The <span style="color:#0471a6">Matching</span> tab contains the analysis of three matching procedures: propensity score matching, coarsened exact matching and constrained pair matching.
+* The <span style="color:#0471a6">Summary</span> tabs gathers all results found with the different procedures.
+* All the R code for this tutorial is available in its GitHub directory.
 
 </DIV>
 

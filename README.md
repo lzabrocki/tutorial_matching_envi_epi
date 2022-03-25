@@ -1,2 +1,4 @@
-# lzabrocki.github.io
-Repo for my academic website.
+# Matching Methods for Environmental Epidemiology: A Tutorial
+
+
+This repository contains all the materials necessary to reproduce our tutorial on matching methods for environmental epidemiology.

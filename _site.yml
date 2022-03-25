@@ -4,6 +4,7 @@ theme: theme.css
 description: |
   Matching Tutorial
 output_dir: "website_documents"
+source_url: https://github.com/lzabrocki/tutorial_matching_envi_epi
 navbar:
   right:
     - text: "Home"
