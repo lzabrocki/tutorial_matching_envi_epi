@@ -36,7 +36,8 @@ Hello and welcome!
 This website gathers all the materials for the paper *Matching Methods for Environmental Epidemiology: A Tutorial* by [Tarik Benmarhnia](https://profiles.ucsd.edu/tarik.benmarhnia), [Marie-Abèle Bind](https://biostatistics.massgeneral.org/faculty/marie-abele-bind-phd/), and [Léo Zabrocki](https://lzabrocki.github.io/).
 
 
-Decrire ici le but du papier
+using a real environmental data set, we conducted a simulation study of the effect of heat waves on daily number of years of life lost (YoLL) in Montreal over the 200
+
 
 The website is structured as follows:
 
