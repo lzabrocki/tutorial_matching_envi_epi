@@ -35,8 +35,8 @@ html {
   --fig-cap-color:   #0471a6;
   /*-- Specify custom fonts ~~~ must be imported above   --*/
   --heading-font:    'Oswald', sans-serif;
-  --mono-font:       'Fira Sans', monospace;
-  --body-font:       'Crimson Pro', serif;
+  --mono-font:       'Roboto Condensed', monospace;
+  --body-font:       'Roboto Condensed', serif;
   --navbar-font:     'Oswald', sans-serif;  /* websites + blogs only */
 }
 
@@ -50,8 +50,8 @@ d-byline {
 
 /*-- ARTICLE TABLE OF CONTENTS --*/
 .d-contents {
-  --heading-size:    18px;
-  --contents-size:   13px;
+  --heading-size:    20px;
+  --contents-size:   18px;
 }
 
 /*-- ARTICLE APPENDIX --*/
@@ -66,9 +66,9 @@ d-appendix {
 /* These properties only apply to Distill sites and blogs  */
 
 .distill-site-header {
-  --title-size:       30px;
+  --title-size:       20px;
   --text-color:       #0471a6;
-  --text-size:        30px;
+  --text-size:        20px;
   --hover-color:      #f4a261;
   --bkgd-color:       #FFFFFF;
   --font-weight:      700;
@@ -99,6 +99,9 @@ a:visited {
   color: #0471a6;
 }
 
+pre.r {
+  background-color: #f8f9fa;
+}
 
 /* Buttons on home page */
 

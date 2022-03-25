@@ -41,7 +41,7 @@ body {
 text-align: justify}
 </style>
 
-In this document, we provide all steps and R codes required to evaluate if days with heat wave are similar to days without heat wave. **Should you have any questions, need help to reproduce the analysis or find coding errors, please do not hesitate to contact us at leo.zabrocki@psemail.eu**
+In this document, we provide all steps and R codes required to evaluate if days with heat wave are similar to days without heat wave for a set of confounding factors. **Should you have any questions, need help to reproduce the analysis or find coding errors, please do not hesitate to contact us at leo.zabrocki@psemail.eu**
 
 # Required Packages
 
@@ -68,7 +68,7 @@ We finally load our custom `ggplot2` theme for graphs:
 
 ```{r}
 # load ggplot custom theme
-source(here::here("2.functions",
+source(here::here("docs", "2.functions",
                   "script_theme_tufte.R"))
 # define nice colors
 my_blue <- "#0081a7"
@@ -77,19 +77,19 @@ my_orange <- "#fb8500"
 
 # Checking Covariates Balance
 
-We load the simulated environmental data:
+We load the environmental data:
 
 ```{r}
 # load the data
 data <-
-  readRDS(here::here("1.data", "raw_environmental_data.rds")) %>%
+  readRDS(here::here("docs", "1.data", "environmental_data.rds")) %>%
   # we recode the heat_wave variable
   mutate(heat_wave = ifelse(heat_wave == 1, "Days with Heat Wave", "Days without Heat Wave"))
 ```
 
 ### Continuous Covariates
 
-We first explore whether continuous covariates (i.e., the relative humidity, O$_{3}$ and NO$_{2}$ concentrations) and their lags (up to the third previous day) are balanced. We plot below the density distribution of each covariate by treatment group:
+We first explore whether the relative humidity measured in $t$ and the lags of O$_{3}$ and NO$_{2}$ concentrations are balanced. We plot below the density distribution of each covariate by treatment group:
 
 ```{r, fig.width = 8, fig.height = 6, code_folding="Please show me the code!"}
 # make the graph
@@ -144,7 +144,7 @@ graph_continuous_cov_densities
 # save the graph
 ggsave(
   graph_continuous_cov_densities + labs(title = NULL),
-  filename = here::here("3.outputs", "2.graphs", "graph_continuous_cov_densities.pdf"),
+  filename = here::here("docs", "3.outputs", "2.graphs", "graph_continuous_cov_densities.pdf"),
   width = 20,
   height = 15,
   units = "cm",
@@ -152,7 +152,7 @@ ggsave(
 )
 ```
 
-On this graph, we can see that the relative humidity and the lags of O$_{3}$ are imbalanced across the treatment and control groups. As an alternative to density distributions, we can summarize the imbalance by computing, for each covariate, the absolute standardized mean difference between treatment and control groups. The absolute standardized mean difference of a covariate is just the absolute value of the difference in means between treated and control units divided by the standard deviation of the treatment group. We can simply compute and plot this metric using the following code:
+On this graph, we can see that the relative humidity and the lags of O$_{3}$ are imbalanced across the treatment and control groups. It is less the case for NO$_{2}$. As an alternative to density distributions, we can summarize the imbalance by computing, for each covariate, the absolute standardized mean difference between treatment and control groups. The absolute standardized mean difference of a covariate is just the absolute value of the difference in means between treated and control units divided by the standard deviation of the treatment group. We can simply compute and plot this metric using the following code:
 
 ```{r, fig.width = 9, fig.height = 3, code_folding="Please show me the code!"}
 # reshape the data into long
@@ -218,7 +218,7 @@ graph_std_diff_continuous_cov
 # save the graph
 ggsave(
   graph_std_diff_continuous_cov + labs(title = NULL),
-  filename = here::here("3.outputs", "2.graphs", "graph_std_diff_continuous_cov.pdf"),
+  filename = here::here("docs", "3.outputs", "2.graphs", "graph_std_diff_continuous_cov.pdf"),
   width = 20,
   height = 6,
   units = "cm",
@@ -227,6 +227,16 @@ ggsave(
 ```
 
 On this graph, the black line represents standardized mean differences equal to 0 and the orange line is the 0.1 threshold often used in the matching literature to assess balance. Standardized mean differences below this threshold would indicate good balance. Here, for all covariates and lags, the treatment and control groups are imbalanced.
+
+We display in the table below the values of the standardized mean differences by covariates and lags:
+
+```{r, code_folding="Please show me the code!"}
+data_standardized_difference %>%
+  mutate(standardized_difference = round(standardized_difference, 2)) %>%
+  arrange(fct_rev(time)) %>%
+  rename("Covariate" = "covariate_name", "Time" = "time", "Standardized Mean Difference" = "standardized_difference") %>%
+  kable(., align = c("l", "l", "c"))
+```
 
 ### Categorical Covariates
 
@@ -284,7 +294,7 @@ graph_weekday_balance
 # save the graph
 ggsave(
   graph_weekday_balance + labs(title = NULL),
-  filename = here::here("3.outputs", "2.graphs", "graph_weekday_balance.pdf"),
+  filename = here::here("docs", "3.outputs", "2.graphs", "graph_weekday_balance.pdf"),
   width = 16,
   height = 9,
   units = "cm",
@@ -333,7 +343,7 @@ graph_month_balance
 # save the graph
 ggsave(
   graph_month_balance + labs(title = NULL),
-  filename = here::here("3.outputs", "2.graphs", "graph_month_balance.pdf"),
+  filename = here::here("docs", "3.outputs", "2.graphs", "graph_month_balance.pdf"),
   width = 15,
   height = 8,
   units = "cm",
@@ -377,7 +387,7 @@ graph_year_balance
 # save the graph
 ggsave(
   graph_year_balance + labs(title = NULL),
-  filename = here::here("3.outputs", "2.graphs", "graph_year_balance.pdf"),
+  filename = here::here("docs", "3.outputs", "2.graphs", "graph_year_balance.pdf"),
   width = 15,
   height = 8,
   units = "cm",
@@ -459,7 +469,7 @@ graph_all_calendar_balance
 # save the graph
 ggsave(
   graph_all_calendar_balance + labs(title = NULL),
-  filename = here::here("3.outputs", "2.graphs", "graph_all_calendar_balance.pdf"),
+  filename = here::here("docs", "3.outputs", "2.graphs", "graph_all_calendar_balance.pdf"),
   width = 18,
   height = 15,
   units = "cm",
@@ -467,9 +477,19 @@ ggsave(
 )
 ```
 
+
+We display in the table below the values of the standardized mean differences by covariates and lags:
+
+```{r, code_folding="Please show me the code!"}
+data_calendar_difference %>%
+  select(calendar_variable, value, abs_difference) %>%
+  rename("Calendard Variable" = "calendar_variable", "Value" = "value", "Absolue Difference in % Points" = "abs_difference") %>%
+  kable(., align = c("l", "l", "c"))
+```
+
 # Lack of Common Support
 
-Finally, we reproduce the same figure used to illustrate the issue of a lack of common support. We plot the YLL against the concentration of ozone in $t-1$ and color the points according to the heat wave status: 
+To illustrate the issue of a lack of common support, we plot the YLL against the concentration of ozone in $t-1$ and color the points according to the heat wave status: 
 
 ```{r, fig.width=6, fig.height=4, code_folding="Please show me the code!"}
 # illustrate lack of support
@@ -488,8 +508,8 @@ graph_lack_support_1
 # save the graph
 ggsave(
   graph_lack_support_1 + labs(title = NULL),
-  filename = here::here("3.outputs", "2.graphs", "graph_lack_support_1.pdf"),
-  width = 15,
+  filename = here::here("docs", "3.outputs", "2.graphs", "graph_lack_support_1.pdf"),
+  width = 20,
   height = 15,
   units = "cm",
   device = cairo_pdf
@@ -516,7 +536,7 @@ graph_lack_support_2
 # save the graph
 ggsave(
   graph_lack_support_2 + labs(title = NULL),
-  filename = here::here("3.outputs", "2.graphs", "graph_lack_support_2.pdf"),
+  filename = here::here("docs", "3.outputs", "2.graphs", "graph_lack_support_2.pdf"),
   width = 30,
   height = 20,
   units = "cm",

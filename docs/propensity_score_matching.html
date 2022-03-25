@@ -2157,8 +2157,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     --fig-cap-color:   #0471a6;
     /*-- Specify custom fonts ~~~ must be imported above   --*/
     --heading-font:    'Oswald', sans-serif;
-    --mono-font:       'Fira Sans', monospace;
-    --body-font:       'Crimson Pro', serif;
+    --mono-font:       'Roboto Condensed', monospace;
+    --body-font:       'Roboto Condensed', serif;
     --navbar-font:     'Oswald', sans-serif;  /* websites + blogs only */
   }
 
@@ -2172,8 +2172,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   /*-- ARTICLE TABLE OF CONTENTS --*/
   .d-contents {
-    --heading-size:    18px;
-    --contents-size:   13px;
+    --heading-size:    20px;
+    --contents-size:   18px;
   }
 
   /*-- ARTICLE APPENDIX --*/
@@ -2188,9 +2188,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   /* These properties only apply to Distill sites and blogs  */
 
   .distill-site-header {
-    --title-size:       30px;
+    --title-size:       20px;
     --text-color:       #0471a6;
-    --text-size:        30px;
+    --text-size:        20px;
     --hover-color:      #f4a261;
     --bkgd-color:       #FFFFFF;
     --font-weight:      700;
@@ -2221,6 +2221,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     color: #0471a6;
   }
 
+  pre.r {
+    background-color: #f8f9fa;
+  }
 
   /* Buttons on home page */
 
@@ -2436,8 +2439,7 @@ Data
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
-<span class="nav-dropdown-header">Sources</span>
-<span class="nav-dropdown-header">Codebook</span>
+<span class="nav-dropdown-header">Sources and Codebook</span>
 <a href="eda_covariates_balance.html">EDA</a>
 </div>
 </div>
@@ -2538,7 +2540,7 @@ text-align: justify}
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># load ggplot custom theme</span>
-<span class='kw'><a href='https://rdrr.io/r/base/source.html'>source</a></span><span class='op'>(</span><span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>"2.functions"</span>,
+<span class='kw'><a href='https://rdrr.io/r/base/source.html'>source</a></span><span class='op'>(</span><span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>"docs"</span>, <span class='st'>"2.functions"</span>,
                   <span class='st'>"script_theme_tufte.R"</span><span class='op'>)</span><span class='op'>)</span>
 <span class='co'># define nice colors</span>
 <span class='va'>my_blue</span> <span class='op'>&lt;-</span> <span class='st'>"#0081a7"</span>
@@ -2551,9 +2553,9 @@ text-align: justify}
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># load the data</span>
 <span class='va'>data</span> <span class='op'>&lt;-</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/readRDS.html'>readRDS</a></span><span class='op'>(</span><span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>"1.data"</span>, <span class='st'>"simulated_environmental_data.rds"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='co'># define week and year as factors</span>
-  <span class='fu'>mutate_at</span><span class='op'>(</span><span class='fu'>vars</span><span class='op'>(</span><span class='va'>week</span>, <span class='va'>year</span><span class='op'>)</span>, <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>.</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/readRDS.html'>readRDS</a></span><span class='op'>(</span><span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>"docs"</span>, <span class='st'>"1.data"</span>, <span class='st'>"environmental_data.rds"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='co'># define year as factors</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>year <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>year</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
@@ -2636,7 +2638,7 @@ Please show me the code!
 <span class='fu'>ggsave</span><span class='op'>(</span>
   <span class='va'>graph_propensity_score_distribution_inf</span> <span class='op'>+</span> <span class='fu'>labs</span><span class='op'>(</span>title <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>,
   filename <span class='op'>=</span> <span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span>
-    <span class='st'>"3.outputs"</span>,
+    <span class='st'>"docs"</span>, <span class='st'>"3.outputs"</span>,
     <span class='st'>"2.graphs"</span>,
     <span class='st'>"graph_propensity_score_distribution_inf.pdf"</span>
   <span class='op'>)</span>,
@@ -2726,7 +2728,7 @@ Please show me the code!
 <span class='fu'>ggsave</span><span class='op'>(</span>
   <span class='va'>graph_love_plot_ps_inf</span> <span class='op'>+</span> <span class='fu'>labs</span><span class='op'>(</span>title <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>,
   filename <span class='op'>=</span> <span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span>
-    <span class='st'>"3.outputs"</span>,
+    <span class='st'>"docs"</span>, <span class='st'>"3.outputs"</span>,
     <span class='st'>"2.graphs"</span>,
     <span class='st'>"graph_love_plot_ps_inf.pdf"</span>
   <span class='op'>)</span>,
@@ -2884,7 +2886,7 @@ Please show me the code!
 <span class='fu'>ggsave</span><span class='op'>(</span>
   <span class='va'>graph_propensity_score_distribution_0.5</span> <span class='op'>+</span> <span class='fu'>labs</span><span class='op'>(</span>title <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>,
   filename <span class='op'>=</span> <span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span>
-    <span class='st'>"3.outputs"</span>,
+    <span class='st'>"docs"</span>, <span class='st'>"3.outputs"</span>,
     <span class='st'>"2.graphs"</span>,
     <span class='st'>"graph_propensity_score_distribution_0.5.pdf"</span>
   <span class='op'>)</span>,
@@ -2942,7 +2944,7 @@ Please show me the code!
 <span class='fu'>ggsave</span><span class='op'>(</span>
   <span class='va'>graph_love_plot_ps_0.5</span>,
   filename <span class='op'>=</span> <span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span>
-    <span class='st'>"3.outputs"</span>,
+    <span class='st'>"docs"</span>, <span class='st'>"3.outputs"</span>,
     <span class='st'>"2.graphs"</span>,
     <span class='st'>"graph_love_plot_ps_0.5.pdf"</span>
   <span class='op'>)</span>,
@@ -3056,7 +3058,7 @@ Please show me the code!
   <span class='fu'><a href='https://rdrr.io/r/base/readRDS.html'>saveRDS</a></span><span class='op'>(</span>
     <span class='va'>.</span>,
     <span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span>
-      <span class='st'>"3.outputs"</span>,
+      <span class='st'>"docs"</span>, <span class='st'>"3.outputs"</span>,
       <span class='st'>"1.data"</span>,
       <span class='st'>"covariates_balance"</span>,
       <span class='st'>"data_cov_balance_ps.RDS"</span>
@@ -3318,7 +3320,7 @@ Please show me the code!
   <span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'><a href='https://rdrr.io/r/base/readRDS.html'>saveRDS</a></span><span class='op'>(</span><span class='va'>.</span>,
           <span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span>
-            <span class='st'>"3.outputs"</span>,
+            <span class='st'>"docs"</span>, <span class='st'>"3.outputs"</span>,
             <span class='st'>"1.data"</span>,
             <span class='st'>"analysis_results"</span>,
             <span class='st'>"data_analysis_ps.RDS"</span>
