@@ -1,0 +1,41 @@
+---
+title: "Matching Methods for Environmental Epidemiology: A Tutorial"
+image: "3.outputs/cover_picture.png"
+links:
+  - label: <i id="icons" class="fas fa-envelope big-icon"></i>
+    url: "mailto:leo.zabrocki@gmail.com"
+  - label: <i id="icons" class="fab fa-github big-icon"></i>
+    url: "https://github.com/lzabrocki"
+output:
+  postcards::trestles
+site: distill::distill_website
+---
+
+```{css echo=FALSE}
+a:link {
+  color: #0471a6;
+}
+
+a:hover {
+  color: #f4a261;
+}
+
+a:visited {
+  color: #0471a6;
+}
+
+h1 {
+  color: #0471a6;
+}
+```
+
+<DIV align="justify">
+
+# Tutorial's Structure
+
+The air pollution and health effects of cruise vessel traffic is a growing concern in the Mediterranean area. We propose a novel methodology based on high-frequency observational data to estimate the causal effects of maritime traffic on pollution. We apply this method to cruise traffic in Marseille, a large Mediterranean port city. Using a new pair-matching algorithm designed for time series data, we create hypothetical randomized experiments and estimate the change in air pollution caused by a short-term increase in cruise traffic. We carry out a randomization-based approach to quantify uncertainty and compute 95\% Fisherian intervals (FI) consistent with the matched data.
+
+</DIV>
+
+
+

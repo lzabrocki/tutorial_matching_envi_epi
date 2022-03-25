@@ -1,0 +1,30 @@
+name: "website_tutorial_matching_envi_epi"
+title: "Matching Environmental Epidemiology"
+theme: theme.css
+description: |
+  Matching Tutorial
+output_dir: "website_documents"
+navbar:
+  right:
+    - text: "Home"
+      href: index.html
+    - text: "Paper"
+    - text: "Data"
+      menu: 
+        - text: "Sources"
+        - text: "Codebook"
+        - text: "EDA" 
+          href: eda_covariates_balance.html
+    - text: "Standard Approach"
+      href: outcome_regression_analysis.html
+    - text: "Matching"
+      menu: 
+        - text: "Propensity Score Matching"
+        - href: propensity_score_matching.html
+        - text: "Coarsened Exact Matching"
+        - href: coarsened_exact_matching.html
+        - text: "Constrained Pair Matching"
+        - href: constrained_pair_matching.html
+    - text: "Summary"
+    - href: summary_results.html
+output: distill::distill_article

@@ -1,0 +1,298 @@
+---
+title: "Summary of Results "
+description: |
+  Detailled Script.
+author:
+  - name: Tarik Benmarhnia
+    url: https://profiles.ucsd.edu/tarik.benmarhnia
+    affiliation: UCSD & Scripps Institute
+    affiliation_url: https://benmarhniaresearch.ucsd.edu/
+  - name: Marie-Abèle Bind 
+    url: https://scholar.harvard.edu/marie-abele
+    affiliation: Biostatistics Center, Massachusetts General Hospital
+    affiliation_url: https://biostatistics.massgeneral.org/faculty/marie-abele-bind-phd/
+  - name: Léo Zabrocki 
+    url: https://lzabrocki.github.io/
+    affiliation: Paris School of Economics
+    affiliation_url: https://www.parisschoolofeconomics.eu/fr/zabrocki-leo/
+date: "`r Sys.Date()`"
+output: 
+    distill::distill_article:
+      toc: true
+      toc_depth: 3
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+# code chunk option
+knitr::opts_chunk$set(
+  fig.path = "images/",
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  dev = "CairoPNG",
+  dpi = 400
+)
+```
+
+<style>
+body {
+text-align: justify}
+</style>
+
+In this document, we display the results of the three matching procedures we implemented. **Should you have any questions, need help to reproduce the analysis or find coding errors, please do not hesitate to contact us at leo.zabrocki@psemail.eu**.
+
+# Required Packages and Data Loading
+
+To reproduce exactly the `summary_results.html` document, we first need to have installed:
+
+* the [R](https://www.r-project.org/) programming language 
+* [RStudio](https://rstudio.com/), an integrated development environment for R, which will allow you to knit the `summary_results.Rmd` file and interact with the R code chunks
+* the [R Markdown](https://rmarkdown.rstudio.com/) package
+* and the [Distill](https://rstudio.github.io/distill/) package which provides the template for this document. 
+
+Once everything is set up, we load the following packages:
+
+```{r}
+# load required packages
+library(knitr) # for creating the R Markdown document
+library(here) # for files paths organization
+library(tidyverse) # for data manipulation and visualization
+```
+
+We load our custom `ggplot2` theme for graphs:
+
+```{r}
+# load ggplot custom theme
+source(here::here("2.functions",
+                  "script_theme_tufte.R"))
+# define nice colors
+my_blue <- "#0081a7"
+my_orange <- "#fb8500"
+```
+
+# Covariates Balance Results
+
+We load and clean the data on covariates balance for each matching procedure:
+
+```{r}
+# load and bind data
+files <- dir(
+  path = here::here("3.outputs",
+                    "1.data",
+                    "covariates_balance"),
+  pattern = "*.RDS",
+  full.names = TRUE
+)
+
+data_cov_balance <- files %>%
+  map( ~ readRDS(.)) %>%
+  reduce(rbind)
+
+# recode type
+data_cov_balance <- data_cov_balance %>%
+  mutate(
+    type = case_when(
+      type == "Binary" ~ "Binary",
+      type == "Contin." ~ "Continuous",
+      type == "binary" ~ "Binary",
+      type == "continuous" ~ "Continuous"
+    )
+  )
+
+# clean data for summary statistics
+data_cm_cpm <- data_cov_balance %>%
+  filter(matching_procedure %in% c("Coarsened Exact Matching", "Constrained Pair Matching")) %>%
+  filter(sample == "Matched Data") %>%
+  select(var, type, stat, matching_procedure)
+
+data_initial <- data_cov_balance %>%
+  filter(matching_procedure == "Coarsened Exact Matching" &
+           sample == "Initial Data") %>%
+  select(-matching_procedure) %>%
+  rename(matching_procedure = sample)
+
+data_ps <- data_cov_balance %>%
+  filter(sample %in% c("Without a Caliper", "With a 0.5 SD Caliper")) %>%
+  mutate(
+    matching_procedure = ifelse(
+      sample == "Without a Caliper",
+      "Propensity Score Matching without a Caliper",
+      "Propensity Score Matching with a 0.5 SD Caliper"
+    )) %>%
+  select(-sample)
+
+# bind clean data
+data_cov_balance <- bind_rows(data_initial, data_ps) %>%
+  bind_rows(., data_cm_cpm)
+```
+
+We compute summary statistics on balance for continuous variables:
+
+```{r, echo = FALSE, layout="l-body-outset"}
+data_cov_balance %>%
+  filter(type == "Continuous") %>%
+  group_by(matching_procedure) %>%
+  summarise(
+    "Average of Standardized Mean Differences" = round(mean(stat), 2),
+    "Std. Deviation" = round(sd(stat), 2)
+  ) %>%
+  ungroup() %>%
+  mutate(
+    matching_procedure = fct_relevel(
+      matching_procedure,
+      "Initial Data",
+      "Propensity Score Matching without a Caliper",
+      "Propensity Score Matching with a 0.5 SD Caliper",
+      "Coarsened Exact Matching",
+      "Constrained Pair Matching"
+    )
+  ) %>%
+  arrange(matching_procedure) %>%
+  rename("Matching Procedure" = matching_procedure) %>%
+  kable(., align = c("l", "c", "c"))
+```
+
+We compute summary statistics on balance for binary variables:
+
+```{r, echo = FALSE, layout="l-body-outset"}
+data_cov_balance %>%
+  filter(type == "Binary") %>%
+  group_by(matching_procedure) %>%
+  summarise(
+    "Average of Proportion Differences" = round(mean(stat), 2),
+    "Std. Deviation" = round(sd(stat), 2)
+  ) %>%
+  ungroup() %>%
+  mutate(
+    matching_procedure = fct_relevel(
+      matching_procedure,
+      "Initial Data",
+      "Propensity Score Matching without a Caliper",
+      "Propensity Score Matching with a 0.5 SD Caliper",
+      "Coarsened Exact Matching",
+      "Constrained Pair Matching"
+    )
+  ) %>%
+  arrange(matching_procedure) %>%
+  rename("Matching Procedure" = matching_procedure) %>%
+  kable(., align = c("l", "c", "c"))
+```
+
+# Analysis Results
+
+We load the results on the estimates of treatment effect sizes for the matching procedures and the regression outcome approach:
+
+```{r}
+# load and bind data
+files <- dir(
+  path = here::here("3.outputs",
+                    "1.data",
+                    "analysis_results"),
+  pattern = "*.RDS",
+  full.names = TRUE
+)
+
+data_analysis_results <- files %>%
+  map(~ readRDS(.)) %>% 
+  reduce(rbind)  
+```
+
+We display below the summary of results in a table:
+
+```{r, echo = FALSE, layout="l-body-outset"}
+data_analysis_results %>%
+  mutate("Width of CI" = conf.high - conf.low ,
+         "95% CI" = paste(paste0("(", conf.low, ";"),  paste0(conf.high, ")"))) %>%
+  select(procedure, sample_size, estimate, `95% CI`, `Width of CI`) %>%
+  rename("Procedure" = procedure,
+         "Sample Size" = sample_size,
+         "Estimate" = estimate) %>%
+  mutate(
+    Procedure = fct_relevel(
+      Procedure,
+      "Outcome Regression Model without Covariates Adjustment",
+      "Outcome Regression Model with Covariates Adjustment",
+      "Propensity Score without a Caliper",
+      "Propensity Score without a Caliper and with Covariates Adjustment",
+      "Propensity Score with a 0.5 SD Caliper",
+      "Propensity Score with a 0.5 SD Caliper and with Covariates Adjustment",
+      "Coarsened Matching without Covariates Adjustment",
+      "Coarsened Matching with Covariates Adjustment",
+      "Constrained Pair Matching without Covariates Adjustment",
+      "Constrained Pair Matching with Covariates Adjustment"
+    )
+  ) %>%
+  arrange(Procedure) %>%
+  kable(., align = c("l", "c", "c", "c", "c"))
+```
+
+We display below the summary of results in a graph:
+
+```{r, echo = FALSE, fig.width = 10, fig.height = 4, layout="l-body-outset", code_folding="Please show me the code!"}
+# add column for stripes
+data_analysis_results <- data_analysis_results %>%
+  mutate(group_index = rep(1:5, each = 2), 
+         stripe = ifelse((group_index %% 2) == 0, "Grey", "White"))
+
+# make the graph
+graph_results_ci <-
+  data_analysis_results %>%
+    mutate(
+    procedure = fct_relevel(
+      procedure,
+      "Outcome Regression Model without Covariates Adjustment",
+      "Outcome Regression Model with Covariates Adjustment",
+      "Propensity Score without a Caliper",
+      "Propensity Score without a Caliper and with Covariates Adjustment",
+      "Propensity Score with a 0.5 SD Caliper",
+      "Propensity Score with a 0.5 SD Caliper and with Covariates Adjustment",
+      "Coarsened Matching without Covariates Adjustment",
+      "Coarsened Matching with Covariates Adjustment",
+      "Constrained Pair Matching without Covariates Adjustment",
+      "Constrained Pair Matching with Covariates Adjustment"
+    )
+  ) %>%
+  ggplot(.,
+         aes(
+           x = estimate,
+           y = fct_rev(procedure),
+         )) +
+    geom_rect(
+    aes(fill = stripe),
+    ymin = as.numeric(as.factor(data_analysis_results$procedure))-0.495,
+    ymax = as.numeric(as.factor(data_analysis_results$procedure))+0.495,
+    xmin = -Inf,
+    xmax = Inf,
+    color = NA,
+    alpha = 0.4
+  ) +
+  geom_vline(xintercept = 0) +
+  geom_pointrange(aes(xmin = conf.low, xmax = conf.high), size = 0.5, colour = my_blue, lwd = 0.8) +
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 10)) +
+  scale_fill_manual(values = c('gray86', "white")) +
+  guides(fill = FALSE) +
+  ylab("") + xlab("Estimates for Heat Waves Effects on YLL") +
+  theme_tufte() +
+  theme(axis.ticks.y = element_blank())
+
+
+# print the graph
+graph_results_ci
+
+# save the graph
+ggsave(
+  graph_results_ci,
+  filename = here::here(
+    "3.outputs",
+    "2.graphs",
+    "graph_results_ci.pdf"
+  ),
+  width = 25,
+  height = 12,
+  units = "cm",
+  device = cairo_pdf
+)
+```
+
