@@ -1,4 +1,4 @@
-name: "website_tutorial_matching_envi_epi"
+name: "."
 title: "Matching Environmental Epidemiology"
 theme: theme.css
 description: |
@@ -26,6 +26,4 @@ navbar:
         - href: constrained_pair_matching.html
     - text: "Summary"
     - href: summary_results.html
-  source_url: https://github.com/lzabrocki/tutorial_matching_envi_epi
-  search: false
 output: distill::distill_article

@@ -72,7 +72,7 @@ We load our custom `ggplot2` theme for graphs:
 
 ```{r, echo = TRUE}
 # load ggplot custom theme
-source(here::here("docs", "2.functions",
+source(here::here("inputs", "2.functions",
                   "script_theme_tufte.R"))
 # define nice colors
 my_blue <- "#0081a7"
@@ -84,7 +84,7 @@ We finally load the data:
 ```{r, echo = TRUE}
 # load the data
 data <-
-  readRDS(here::here("docs", "1.data", "environmental_data.rds"))
+  readRDS(here::here("inputs", "1.data", "environmental_data.rds"))
 ```
 
 As a reminder, there are `r nrow(data %>% filter(heat_wave==1))` days where an heat wave occurred and `r nrow(data %>% filter(heat_wave==0))` days without heat waves.
@@ -204,7 +204,7 @@ graph_love_plot_cm
 ggsave(
   graph_love_plot_cm,
   filename = here::here(
-    "docs", "3.outputs",
+    "inputs", "3.outputs",
     "2.graphs",
     "graph_love_plot_cm.pdf"
   ),
@@ -249,7 +249,7 @@ graph_love_plot_cm[["data"]] %>%
   saveRDS(
     .,
     here::here(
-      "docs", "3.outputs",
+      "inputs", "3.outputs",
       "1.data",
       "covariates_balance",
       "data_cov_balance_cm.RDS"
@@ -344,7 +344,7 @@ bind_rows(
   saveRDS(
     .,
     here::here(
-      "docs", "3.outputs",
+      "inputs", "3.outputs",
       "1.data",
       "analysis_results",
       "data_analysis_cem.RDS"

@@ -1,6 +1,6 @@
 ---
 title: "Matching Methods for Environmental Epidemiology: A Tutorial"
-image: "3.outputs/cover_picture.png"
+image: "inputs/3.outputs/cover_picture.png"
 links:
   - label: <i id="icons" class="fas fa-envelope big-icon"></i>
     url: "mailto:leo.zabrocki@gmail.com"

@@ -75,7 +75,7 @@ We also have to load the `script_time_series_matching_function.R` located in the
 ```{r}
 # load matching functions
 source(here::here(
-  "docs",
+  "inputs",
   "2.functions",
   "script_time_series_matching_function.R"
 ))
@@ -85,7 +85,7 @@ We load our custom `ggplot2` theme for graphs:
 
 ```{r}
 # load ggplot custom theme
-source(here::here("docs",
+source(here::here("inputs",
                   "2.functions",
                   "script_theme_tufte.R"))
 # define nice colors
@@ -98,7 +98,7 @@ We finally load the data:
 ```{r}
 # load the data
 matching_data <-
-  readRDS(here::here("docs", "1.data", "environmental_data.rds")) %>%
+  readRDS(here::here("inputs", "1.data", "environmental_data.rds")) %>%
   fastDummies::dummy_cols(., select_columns = c("month", "year")) %>%
   mutate(month = as.factor(month) %>% as.numeric(.))
 ```
@@ -149,7 +149,7 @@ We save the `matching_data`:
 saveRDS(
   matching_data,
   here::here(
-    "docs", 
+    "inputs", 
     "3.outputs",
     "1.data",
     "constrained_pair_matching",
@@ -307,7 +307,7 @@ final_data <-
 saveRDS(
   final_data,
   here::here(
-    "docs",
+    "inputs",
     "3.outputs",
     "1.data",
     "constrained_pair_matching",
@@ -454,7 +454,7 @@ graph_cpm_love_plot_cobalt
 ggsave(
   graph_cpm_love_plot_cobalt,
   filename = here::here(
-    "docs",
+    "inputs",
     "3.outputs",
     "2.graphs",
     "graph_cpm_love_plot_cobalt.pdf"
@@ -499,7 +499,7 @@ data_love %>%
   saveRDS(
     .,
     here::here(
-          "docs",
+          "inputs",
       "3.outputs",
       "1.data",
       "covariates_balance",
@@ -584,7 +584,7 @@ bind_rows(results_cpm_wo_cov, results_cpm_w_cov) %>%
   saveRDS(
     .,
     here::here(
-          "docs",
+          "inputs",
       "3.outputs",
       "1.data",
       "analysis_results",

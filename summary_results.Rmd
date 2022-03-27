@@ -65,7 +65,7 @@ We load our custom `ggplot2` theme for graphs:
 
 ```{r}
 # load ggplot custom theme
-source(here::here("docs", "2.functions",
+source(here::here("inputs", "2.functions",
                   "script_theme_tufte.R"))
 # define nice colors
 my_blue <- "#0081a7"
@@ -79,7 +79,7 @@ We load and clean the data on covariates balance for each matching procedure:
 ```{r}
 # load and bind data
 files <- dir(
-  path = here::here("docs",
+  path = here::here("inputs",
                     "3.outputs",
                     "1.data",
                     "covariates_balance"),
@@ -188,7 +188,7 @@ We load the results on the estimates of treatment effect sizes for the matching 
 ```{r}
 # load and bind data
 files <- dir(
-  path = here::here("docs",
+  path = here::here("inputs",
                     "3.outputs",
                     "1.data",
                     "analysis_results"),
@@ -287,7 +287,7 @@ graph_results_ci
 ggsave(
   graph_results_ci,
   filename = here::here(
-    "docs",
+    "inputs",
     "3.outputs",
     "2.graphs",
     "graph_results_ci.pdf"

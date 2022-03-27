@@ -65,7 +65,7 @@ We finally load our custom `ggplot2` theme for graphs:
 
 ```{r}
 # load ggplot custom theme
-source(here::here("docs", "2.functions",
+source(here::here("inputs", "2.functions",
                   "script_theme_tufte.R"))
 # define nice colors
 my_blue <- "#0081a7"
@@ -79,7 +79,7 @@ We load the simulated environmental data:
 ```{r}
 # load the data
 data <-
-  readRDS(here::here("docs", "1.data", "environmental_data.rds"))
+  readRDS(here::here("inputs", "1.data", "environmental_data.rds"))
 ```
 
 ### Graphical Difference in YLL 
@@ -116,7 +116,7 @@ graph_boxplot_YLL
 # save the graph
 ggsave(
   graph_boxplot_YLL + labs(title = NULL),
-  filename = here::here("docs", "3.outputs", "2.graphs", "graph_boxplot_YLL .pdf"),
+  filename = here::here("inputs", "3.outputs", "2.graphs", "graph_boxplot_YLL .pdf"),
   width = 10,
   height = 10,
   units = "cm",
@@ -205,7 +205,7 @@ bind_rows(output_crude_regression,
   saveRDS(
     .,
     here::here(
-      "docs",
+      "inputs",
       "3.outputs",
       "1.data",
       "analysis_results",

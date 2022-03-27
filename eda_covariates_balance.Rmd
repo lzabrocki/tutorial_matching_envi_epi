@@ -68,7 +68,7 @@ We finally load our custom `ggplot2` theme for graphs:
 
 ```{r}
 # load ggplot custom theme
-source(here::here("docs", "2.functions",
+source(here::here("inputs", "2.functions",
                   "script_theme_tufte.R"))
 # define nice colors
 my_blue <- "#0081a7"
@@ -82,7 +82,7 @@ We load the environmental data:
 ```{r}
 # load the data
 data <-
-  readRDS(here::here("docs", "1.data", "environmental_data.rds")) %>%
+  readRDS(here::here("inputs", "1.data", "environmental_data.rds")) %>%
   # we recode the heat_wave variable
   mutate(heat_wave = ifelse(heat_wave == 1, "Days with Heat Wave", "Days without Heat Wave"))
 ```
@@ -144,7 +144,7 @@ graph_continuous_cov_densities
 # save the graph
 ggsave(
   graph_continuous_cov_densities + labs(title = NULL),
-  filename = here::here("docs", "3.outputs", "2.graphs", "graph_continuous_cov_densities.pdf"),
+  filename = here::here("inputs", "3.outputs", "2.graphs", "graph_continuous_cov_densities.pdf"),
   width = 20,
   height = 15,
   units = "cm",
@@ -218,7 +218,7 @@ graph_std_diff_continuous_cov
 # save the graph
 ggsave(
   graph_std_diff_continuous_cov + labs(title = NULL),
-  filename = here::here("docs", "3.outputs", "2.graphs", "graph_std_diff_continuous_cov.pdf"),
+  filename = here::here("inputs", "3.outputs", "2.graphs", "graph_std_diff_continuous_cov.pdf"),
   width = 20,
   height = 6,
   units = "cm",
@@ -294,7 +294,7 @@ graph_weekday_balance
 # save the graph
 ggsave(
   graph_weekday_balance + labs(title = NULL),
-  filename = here::here("docs", "3.outputs", "2.graphs", "graph_weekday_balance.pdf"),
+  filename = here::here("inputs", "3.outputs", "2.graphs", "graph_weekday_balance.pdf"),
   width = 16,
   height = 9,
   units = "cm",
@@ -343,7 +343,7 @@ graph_month_balance
 # save the graph
 ggsave(
   graph_month_balance + labs(title = NULL),
-  filename = here::here("docs", "3.outputs", "2.graphs", "graph_month_balance.pdf"),
+  filename = here::here("inputs", "3.outputs", "2.graphs", "graph_month_balance.pdf"),
   width = 15,
   height = 8,
   units = "cm",
@@ -387,7 +387,7 @@ graph_year_balance
 # save the graph
 ggsave(
   graph_year_balance + labs(title = NULL),
-  filename = here::here("docs", "3.outputs", "2.graphs", "graph_year_balance.pdf"),
+  filename = here::here("inputs", "3.outputs", "2.graphs", "graph_year_balance.pdf"),
   width = 15,
   height = 8,
   units = "cm",
@@ -469,7 +469,7 @@ graph_all_calendar_balance
 # save the graph
 ggsave(
   graph_all_calendar_balance + labs(title = NULL),
-  filename = here::here("docs", "3.outputs", "2.graphs", "graph_all_calendar_balance.pdf"),
+  filename = here::here("inputs", "3.outputs", "2.graphs", "graph_all_calendar_balance.pdf"),
   width = 18,
   height = 15,
   units = "cm",
@@ -508,7 +508,7 @@ graph_lack_support_1
 # save the graph
 ggsave(
   graph_lack_support_1 + labs(title = NULL),
-  filename = here::here("docs", "3.outputs", "2.graphs", "graph_lack_support_1.pdf"),
+  filename = here::here("inputs", "3.outputs", "2.graphs", "graph_lack_support_1.pdf"),
   width = 20,
   height = 15,
   units = "cm",
@@ -536,7 +536,7 @@ graph_lack_support_2
 # save the graph
 ggsave(
   graph_lack_support_2 + labs(title = NULL),
-  filename = here::here("docs", "3.outputs", "2.graphs", "graph_lack_support_2.pdf"),
+  filename = here::here("inputs", "3.outputs", "2.graphs", "graph_lack_support_2.pdf"),
   width = 30,
   height = 20,
   units = "cm",

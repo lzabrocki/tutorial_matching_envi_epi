@@ -72,7 +72,7 @@ We load our custom `ggplot2` theme for graphs:
 
 ```{r}
 # load ggplot custom theme
-source(here::here("docs", "2.functions",
+source(here::here("inputs", "2.functions",
                   "script_theme_tufte.R"))
 # define nice colors
 my_blue <- "#0081a7"
@@ -84,7 +84,7 @@ We finally load the data:
 ```{r}
 # load the data
 data <-
-  readRDS(here::here("docs", "1.data", "environmental_data.rds")) %>%
+  readRDS(here::here("inputs", "1.data", "environmental_data.rds")) %>%
   # define year as factors
   mutate(year = as.factor(year))
 ```
@@ -153,7 +153,7 @@ graph_propensity_score_distribution_inf
 ggsave(
   graph_propensity_score_distribution_inf + labs(title = NULL),
   filename = here::here(
-    "docs", "3.outputs",
+    "inputs", "3.outputs",
     "2.graphs",
     "graph_propensity_score_distribution_inf.pdf"
   ),
@@ -229,7 +229,7 @@ graph_love_plot_ps_inf
 ggsave(
   graph_love_plot_ps_inf + labs(title = NULL),
   filename = here::here(
-    "docs", "3.outputs",
+    "inputs", "3.outputs",
     "2.graphs",
     "graph_love_plot_ps_inf.pdf"
   ),
@@ -312,7 +312,7 @@ graph_propensity_score_distribution_0.5
 ggsave(
   graph_propensity_score_distribution_0.5 + labs(title = NULL),
   filename = here::here(
-    "docs", "3.outputs",
+    "inputs", "3.outputs",
     "2.graphs",
     "graph_propensity_score_distribution_0.5.pdf"
   ),
@@ -356,7 +356,7 @@ graph_love_plot_ps_0.5
 ggsave(
   graph_love_plot_ps_0.5,
   filename = here::here(
-    "docs", "3.outputs",
+    "inputs", "3.outputs",
     "2.graphs",
     "graph_love_plot_ps_0.5.pdf"
   ),
@@ -401,7 +401,7 @@ graph_love_plot_ps_0.5[["data"]] %>%
   saveRDS(
     .,
     here::here(
-      "docs", "3.outputs",
+      "inputs", "3.outputs",
       "1.data",
       "covariates_balance",
       "data_cov_balance_ps.RDS"
@@ -586,7 +586,7 @@ bind_rows(
   ) %>%
   saveRDS(.,
           here::here(
-            "docs", "3.outputs",
+            "inputs", "3.outputs",
             "1.data",
             "analysis_results",
             "data_analysis_ps.RDS"
