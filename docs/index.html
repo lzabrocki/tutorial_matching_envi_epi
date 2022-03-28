@@ -728,7 +728,8 @@
           @import url('https://fonts.googleapis.com/css2?family=Fira+Sans');
           @import url('https://fonts.googleapis.com/css2?family=Oswald');
           @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro');
-
+          @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono');
+          @import url('https://fonts.googleapis.com/css2?family=Fira+Mono');
 
           html {
             /*-- Main font sizes --*/
@@ -745,16 +746,16 @@
             --fig-cap-color:   #0471a6;
             /*-- Specify custom fonts ~~~ must be imported above   --*/
             --heading-font:    'Oswald', sans-serif;
-            --mono-font:       'Roboto Condensed', monospace;
+            --mono-font:       'Fira Mono', monospace;
             --body-font:       'Roboto Condensed', serif;
             --navbar-font:     'Oswald', sans-serif;  /* websites + blogs only */
           }
 
           /*-- ARTICLE METADATA --*/
           d-byline {
-            --heading-size:    0.6rem;
+            --heading-size:    18px;
             --heading-color:   rgba(0, 0, 0, 0.5);
-            --body-size:       0.8rem;
+            --body-size:       15px;
             --body-color:      rgba(0, 0, 0, 0.8);
           }
 
@@ -810,7 +811,7 @@
           }
 
           pre.r {
-            background-color: #f8f9fa;
+            background-color: #F8F8F8;
           }
 
           /* Buttons on home page */
@@ -1008,7 +1009,7 @@
           <span class="down-arrow">&#x25BE;</span>
           </button>
           <div class="nav-dropdown-content">
-          <span class="nav-dropdown-header">Sources and Codebook</span>
+          <a href="data_sources_codebook.html">Sources and Codebook</a>
           <a href="eda_covariates_balance.html">EDA</a>
           </div>
           </div>

@@ -93,8 +93,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2022-03-27"/>
-  <meta property="article:created" itemprop="dateCreated" content="2022-03-27"/>
+  <meta property="article:published" itemprop="datePublished" content="2022-03-28"/>
+  <meta property="article:created" itemprop="dateCreated" content="2022-03-28"/>
   <meta name="article:author" content="Tarik Benmarhnia"/>
   <meta name="article:author" content="Marie-Abèle Bind"/>
   <meta name="article:author" content="Léo Zabrocki"/>
@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","editor_options"]}},"value":[{"type":"character","attributes":{},"value":["Assessing Covariates Balance"]},{"type":"character","attributes":{},"value":["Detailled Script.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Tarik Benmarhnia"]},{"type":"character","attributes":{},"value":["https://profiles.ucsd.edu/tarik.benmarhnia"]},{"type":"character","attributes":{},"value":["UCSD & Scripps Institute"]},{"type":"character","attributes":{},"value":["https://benmarhniaresearch.ucsd.edu/"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Marie-Abèle Bind"]},{"type":"character","attributes":{},"value":["https://scholar.harvard.edu/marie-abele"]},{"type":"character","attributes":{},"value":["Biostatistics Center, Massachusetts General Hospital"]},{"type":"character","attributes":{},"value":["https://biostatistics.massgeneral.org/faculty/marie-abele-bind-phd/"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Léo Zabrocki"]},{"type":"character","attributes":{},"value":["https://lzabrocki.github.io/"]},{"type":"character","attributes":{},"value":["Paris School of Economics"]},{"type":"character","attributes":{},"value":["https://www.parisschoolofeconomics.eu/fr/zabrocki-leo/"]}]}]},{"type":"character","attributes":{},"value":["2022-03-27"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["chunk_output_type"]}},"value":[{"type":"character","attributes":{},"value":["console"]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","editor_options"]}},"value":[{"type":"character","attributes":{},"value":["Assessing Covariates Balance"]},{"type":"character","attributes":{},"value":["Detailled Script.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Tarik Benmarhnia"]},{"type":"character","attributes":{},"value":["https://profiles.ucsd.edu/tarik.benmarhnia"]},{"type":"character","attributes":{},"value":["UCSD & Scripps Institute"]},{"type":"character","attributes":{},"value":["https://benmarhniaresearch.ucsd.edu/"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Marie-Abèle Bind"]},{"type":"character","attributes":{},"value":["https://scholar.harvard.edu/marie-abele"]},{"type":"character","attributes":{},"value":["Biostatistics Center, Massachusetts General Hospital"]},{"type":"character","attributes":{},"value":["https://biostatistics.massgeneral.org/faculty/marie-abele-bind-phd/"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Léo Zabrocki"]},{"type":"character","attributes":{},"value":["https://lzabrocki.github.io/"]},{"type":"character","attributes":{},"value":["Paris School of Economics"]},{"type":"character","attributes":{},"value":["https://www.parisschoolofeconomics.eu/fr/zabrocki-leo/"]}]}]},{"type":"character","attributes":{},"value":["2022-03-28"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["chunk_output_type"]}},"value":[{"type":"character","attributes":{},"value":["console"]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2140,7 +2140,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   @import url('https://fonts.googleapis.com/css2?family=Fira+Sans');
   @import url('https://fonts.googleapis.com/css2?family=Oswald');
   @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro');
-
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono');
+  @import url('https://fonts.googleapis.com/css2?family=Fira+Mono');
 
   html {
     /*-- Main font sizes --*/
@@ -2157,16 +2158,16 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     --fig-cap-color:   #0471a6;
     /*-- Specify custom fonts ~~~ must be imported above   --*/
     --heading-font:    'Oswald', sans-serif;
-    --mono-font:       'Roboto Condensed', monospace;
+    --mono-font:       'Fira Mono', monospace;
     --body-font:       'Roboto Condensed', serif;
     --navbar-font:     'Oswald', sans-serif;  /* websites + blogs only */
   }
 
   /*-- ARTICLE METADATA --*/
   d-byline {
-    --heading-size:    0.6rem;
+    --heading-size:    18px;
     --heading-color:   rgba(0, 0, 0, 0.5);
-    --body-size:       0.8rem;
+    --body-size:       15px;
     --body-color:      rgba(0, 0, 0, 0.8);
   }
 
@@ -2222,7 +2223,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   }
 
   pre.r {
-    background-color: #f8f9fa;
+    background-color: #F8F8F8;
   }
 
   /* Buttons on home page */
@@ -2419,7 +2420,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Assessing Covariates Balance","description":"Detailled Script.","authors":[{"author":"Tarik Benmarhnia","authorURL":"https://profiles.ucsd.edu/tarik.benmarhnia","affiliation":"UCSD & Scripps Institute","affiliationURL":"https://benmarhniaresearch.ucsd.edu/","orcidID":""},{"author":"Marie-Abèle Bind","authorURL":"https://scholar.harvard.edu/marie-abele","affiliation":"Biostatistics Center, Massachusetts General Hospital","affiliationURL":"https://biostatistics.massgeneral.org/faculty/marie-abele-bind-phd/","orcidID":""},{"author":"Léo Zabrocki","authorURL":"https://lzabrocki.github.io/","affiliation":"Paris School of Economics","affiliationURL":"https://www.parisschoolofeconomics.eu/fr/zabrocki-leo/","orcidID":""}],"publishedDate":"2022-03-27T00:00:00.000+01:00","citationText":"Benmarhnia, et al., 2022"}
+{"title":"Assessing Covariates Balance","description":"Detailled Script.","authors":[{"author":"Tarik Benmarhnia","authorURL":"https://profiles.ucsd.edu/tarik.benmarhnia","affiliation":"UCSD & Scripps Institute","affiliationURL":"https://benmarhniaresearch.ucsd.edu/","orcidID":""},{"author":"Marie-Abèle Bind","authorURL":"https://scholar.harvard.edu/marie-abele","affiliation":"Biostatistics Center, Massachusetts General Hospital","affiliationURL":"https://biostatistics.massgeneral.org/faculty/marie-abele-bind-phd/","orcidID":""},{"author":"Léo Zabrocki","authorURL":"https://lzabrocki.github.io/","affiliation":"Paris School of Economics","affiliationURL":"https://www.parisschoolofeconomics.eu/fr/zabrocki-leo/","orcidID":""}],"publishedDate":"2022-03-28T00:00:00.000+02:00","citationText":"Benmarhnia, et al., 2022"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2439,7 +2440,7 @@ Data
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
-<span class="nav-dropdown-header">Sources and Codebook</span>
+<a href="data_sources_codebook.html">Sources and Codebook</a>
 <a href="eda_covariates_balance.html">EDA</a>
 </div>
 </div>
@@ -2483,7 +2484,7 @@ Matching
   
 ,   Léo Zabrocki <a href="https://lzabrocki.github.io/" class="uri">https://lzabrocki.github.io/</a> (Paris School of Economics)<a href="https://www.parisschoolofeconomics.eu/fr/zabrocki-leo/" class="uri">https://www.parisschoolofeconomics.eu/fr/zabrocki-leo/</a>
   
-<br/>2022-03-27
+<br/>2022-03-28
 </div>
 
 <div class="d-article">
@@ -2505,7 +2506,7 @@ Matching
 body {
 text-align: justify}
 </style>
-<p>In this document, we provide all steps and R codes required to evaluate if days with heat wave are similar to days without heat wave for a set of confounding factors. <strong>Should you have any questions, need help to reproduce the analysis or find coding errors, please do not hesitate to contact us at <a href="mailto:leo.zabrocki@psemail.eu" class="email">leo.zabrocki@psemail.eu</a></strong></p>
+<p>In this document, we provide all steps and R codes to evaluate if days with heat wave are similar to days without heat wave for a set of confounding factors. <strong>Should you have any questions, need help to reproduce the analysis or find coding errors, please do not hesitate to contact us at <a href="mailto:leo.zabrocki@psemail.eu" class="email">leo.zabrocki@psemail.eu</a></strong>.</p>
 <h1 id="required-packages">Required Packages</h1>
 <p>To reproduce exactly the <code>eda_covariates_balance.html</code> document, we first need to have installed:</p>
 <ul>
@@ -3250,13 +3251,14 @@ Please show me the code!
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># illustrate lack of support</span>
 <span class='va'>graph_lack_support_1</span> <span class='op'>&lt;-</span> <span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>data</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>o3_lag_1</span>, y <span class='op'>=</span> <span class='va'>yll</span>, colour <span class='op'>=</span> <span class='va'>heat_wave</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_point</span><span class='op'>(</span>shape <span class='op'>=</span> <span class='fl'>16</span>, alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_point</span><span class='op'>(</span>shape <span class='op'>=</span> <span class='fl'>16</span>, size <span class='op'>=</span> <span class='fl'>0.8</span>, alpha <span class='op'>=</span> <span class='fl'>0.7</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>scale_colour_manual</span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>my_orange</span>, <span class='va'>my_blue</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>scale_x_continuous</span><span class='op'>(</span>breaks <span class='op'>=</span> <span class='fu'>scales</span><span class='fu'>::</span><span class='fu'><a href='https://scales.r-lib.org/reference/breaks_pretty.html'>pretty_breaks</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>labs</span><span class='op'>(</span>colour <span class='op'>=</span> <span class='st'>"Group:"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>ggtitle</span><span class='op'>(</span><span class='st'>"Lack of Support?"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>ggtitle</span><span class='op'>(</span><span class='st'>"Lack of Support? YLL vs. Ozone in t-1"</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>xlab</span><span class='op'>(</span><span class='st'>"O3 in t-1 (µg/m³)"</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'>ylab</span><span class='op'>(</span><span class='st'>"YLL"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>theme_tufte</span><span class='op'>(</span><span class='op'>)</span>
+  <span class='fu'>theme_tufte</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>guides</span><span class='op'>(</span>colour <span class='op'>=</span> <span class='fu'>guide_legend</span><span class='op'>(</span>override.aes <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
 
 <span class='co'># display the graph</span>
 <span class='va'>graph_lack_support_1</span>
@@ -3273,8 +3275,8 @@ Please show me the code!
 <span class='fu'>ggsave</span><span class='op'>(</span>
   <span class='va'>graph_lack_support_1</span> <span class='op'>+</span> <span class='fu'>labs</span><span class='op'>(</span>title <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>,
   filename <span class='op'>=</span> <span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>"inputs"</span>, <span class='st'>"3.outputs"</span>, <span class='st'>"2.graphs"</span>, <span class='st'>"graph_lack_support_1.pdf"</span><span class='op'>)</span>,
-  width <span class='op'>=</span> <span class='fl'>20</span>,
-  height <span class='op'>=</span> <span class='fl'>15</span>,
+  width <span class='op'>=</span> <span class='fl'>14</span>,
+  height <span class='op'>=</span> <span class='fl'>12</span>,
   units <span class='op'>=</span> <span class='st'>"cm"</span>,
   device <span class='op'>=</span> <span class='va'>cairo_pdf</span>
 <span class='op'>)</span>
@@ -3296,7 +3298,7 @@ Please show me the code!
   <span class='fu'>scale_x_continuous</span><span class='op'>(</span>breaks <span class='op'>=</span> <span class='fu'>scales</span><span class='fu'>::</span><span class='fu'><a href='https://scales.r-lib.org/reference/breaks_pretty.html'>pretty_breaks</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span> <span class='va'>year</span><span class='op'>)</span> <span class='op'>+</span> 
   <span class='fu'>labs</span><span class='op'>(</span>colour <span class='op'>=</span> <span class='st'>"Group:"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>ggtitle</span><span class='op'>(</span><span class='st'>"Lack of Support?"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>ggtitle</span><span class='op'>(</span><span class='st'>"Lack of Support? YLL vs. Ozone in t-1 by Year"</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>xlab</span><span class='op'>(</span><span class='st'>"O3 in t-1 (µg/m³)"</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'>ylab</span><span class='op'>(</span><span class='st'>"YLL"</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>theme_tufte</span><span class='op'>(</span><span class='op'>)</span>
 
@@ -3325,6 +3327,114 @@ Please show me the code!
 </details>
 </div>
 <p>Again, there is a clear lack of common support within each year.</p>
+<p>Finally, we can also visualize the imbalance and lack of common support in the data by predicting, using a simple logistic model, the probability of an heat wave to occur for each day.</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Please show me the code!
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># predict propensity scores</span>
+<span class='va'>logit_model</span> <span class='op'>&lt;-</span> <span class='va'>data</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>heat_wave <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>heat_wave</span> <span class='op'>==</span> <span class='st'>"Days without Heat Wave"</span>, <span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/glm.html'>glm</a></span><span class='op'>(</span>
+    <span class='va'>heat_wave</span> <span class='op'>~</span> <span class='va'>heat_wave_lag_1</span> <span class='op'>+</span> <span class='va'>heat_wave_lag_2</span> <span class='op'>+</span> <span class='va'>heat_wave_lag_3</span> <span class='op'>+</span>
+      <span class='va'>humidity_relative</span> <span class='op'>+</span>
+      <span class='va'>o3_lag_1</span> <span class='op'>+</span> <span class='va'>o3_lag_2</span> <span class='op'>+</span> <span class='va'>o3_lag_3</span> <span class='op'>+</span>
+      <span class='va'>no2_lag_1</span> <span class='op'>+</span> <span class='va'>no2_lag_2</span> <span class='op'>+</span> <span class='va'>no2_lag_3</span> <span class='op'>+</span>
+      <span class='va'>weekend</span> <span class='op'>+</span> <span class='va'>month</span> <span class='op'>+</span> <span class='va'>year</span>,
+    family <span class='op'>=</span> <span class='st'>"binomial"</span>,
+    data <span class='op'>=</span> <span class='va'>.</span>
+  <span class='op'>)</span>
+
+<span class='co'># add predicted probabilities</span>
+<span class='va'>data</span> <span class='op'>&lt;-</span> <span class='fu'>broom</span><span class='fu'>::</span><span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>logit_model</span>,
+                       newdata <span class='op'>=</span> <span class='va'>data</span>,
+                       type.predict <span class='op'>=</span> <span class='st'>"response"</span><span class='op'>)</span>
+
+<span class='co'># create the graph</span>
+<span class='va'>graph_lack_support_3</span> <span class='op'>&lt;-</span> <span class='va'>data</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>.</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>.fitted</span>, colour <span class='op'>=</span> <span class='va'>heat_wave</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://rdrr.io/r/graphics/plot.window.html'>xlim</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_density</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>scale_colour_manual</span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>my_orange</span>, <span class='va'>my_blue</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>colour <span class='op'>=</span> <span class='st'>"Group:"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>ggtitle</span><span class='op'>(</span><span class='st'>"Lack of Support? Propensity Score Distributions"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>xlab</span><span class='op'>(</span><span class='st'>"Predicted Probability of Treatment"</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'>ylab</span><span class='op'>(</span><span class='st'>"Density"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_tufte</span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='co'># display the graph</span>
+<span class='va'>graph_lack_support_3</span>
+</code></pre>
+</div>
+</details>
+<img src="images/unnamed-chunk-15-1.png" width="2400" />
+<details>
+<summary>
+Please show me the code!
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># save the graph</span>
+<span class='fu'>ggsave</span><span class='op'>(</span>
+  <span class='va'>graph_lack_support_3</span> <span class='op'>+</span> <span class='fu'>labs</span><span class='op'>(</span>title <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>,
+  filename <span class='op'>=</span> <span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>"inputs"</span>, <span class='st'>"3.outputs"</span>, <span class='st'>"2.graphs"</span>, <span class='st'>"graph_lack_support_3.pdf"</span><span class='op'>)</span>,
+  width <span class='op'>=</span> <span class='fl'>14</span>,
+  height <span class='op'>=</span> <span class='fl'>10</span>,
+  units <span class='op'>=</span> <span class='st'>"cm"</span>,
+  device <span class='op'>=</span> <span class='va'>cairo_pdf</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+</div>
+<p>We can see on this graph that the two density distributions do not overlap. We display below the summary statistics of the two distributions:</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Please show me the code!
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>data</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>heat_wave</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>summarise</span><span class='op'>(</span>
+    Mean <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>.fitted</span><span class='op'>)</span>,
+    SD <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>.fitted</span><span class='op'>)</span>,
+    Min <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>min</a></span><span class='op'>(</span><span class='va'>.fitted</span><span class='op'>)</span>,
+    Max <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='va'>.fitted</span><span class='op'>)</span>
+  <span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate_at</span><span class='op'>(</span><span class='fu'>vars</span><span class='op'>(</span><span class='op'>-</span><span class='va'>heat_wave</span><span class='op'>)</span>, <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='va'>.</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>.</span>, align <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"l"</span>, <span class='st'>"c"</span>, <span class='st'>"c"</span>, <span class='st'>"c"</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">heat_wave</th>
+<th style="text-align: center;">Mean</th>
+<th style="text-align: center;">SD</th>
+<th style="text-align: center;">Min</th>
+<th style="text-align: left;">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Days with Heat Wave</td>
+<td style="text-align: center;">0.28</td>
+<td style="text-align: center;">0.24</td>
+<td style="text-align: center;">0.01</td>
+<td style="text-align: left;">0.88</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Days without Heat Wave</td>
+<td style="text-align: center;">0.07</td>
+<td style="text-align: center;">0.10</td>
+<td style="text-align: center;">0.00</td>
+<td style="text-align: left;">0.85</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

@@ -296,7 +296,7 @@ results_cm_wo_cov %>%
   kable(., align = c("l", "c", "c", "c"))
 ```
 
-We find that the estimate for the treatment is equal to +`r results_cm_wo_cov$estimate` years of life lost. The 95% confidence interval is consistent with effects ranging from +`r results_cm_wo_cov$conf.low` up to +`r results_cm_wo_cov$conf.high`. If we want to increase the precision of our estimate and remove any remaining imbalance in covariates, we can also run a multivariate regression. We adjust below for the same variables used in the propensity score matching procedure and the day of the week:
+We find that the estimate for the treatment is equal to +`r results_cm_wo_cov$estimate` years of life lost. The 95% confidence interval is consistent with effects ranging from +`r results_cm_wo_cov$conf.low` YLL up to +`r results_cm_wo_cov$conf.high` YLL. If we want to increase the precision of our estimate and remove any remaining imbalance in covariates, we can also run a multivariate regression. We adjust below for the same variables used in the propensity score matching procedure and the day of the week:
 
 ```{r}
 # we fit the regression model
@@ -327,7 +327,7 @@ results_cm_w_cov %>%
   kable(., align = c("l", "c", "c", "c"))
 ```
 
-We find that the average effect on the treated is equal to +`r results_cm_w_cov$estimate` years of life lost. The 95% confidence interval is consistent with effects ranging from +`r results_cm_w_cov$conf.low` up to +`r results_cm_w_cov$conf.high`. The width of confidence interval is now equal to `r results_cm_w_cov$conf.high - results_cm_w_cov$conf.low`, which is smaller than the previous interval of `r results_cm_wo_cov$conf.high - results_cm_wo_cov$conf.low`.
+We find that the average effect on the treated is equal to +`r results_cm_w_cov$estimate` years of life lost. The 95% confidence interval is consistent with effects ranging from +`r results_cm_w_cov$conf.low` YLL up to +`r results_cm_w_cov$conf.high` YLL. The width of confidence interval is now equal to `r results_cm_w_cov$conf.high - results_cm_w_cov$conf.low` YLL, which is a bit smaller than the previous interval of `r results_cm_wo_cov$conf.high - results_cm_wo_cov$conf.low` YLL.
 
 We finally save the data on coarsened results in the `3.outputs/1.data/analysis_results` folder.
 

@@ -1,0 +1,119 @@
+---
+title: "Data Sources & Codebook"
+description: |
+  Detailled Script.
+author:
+  - name: Tarik Benmarhnia
+    url: https://profiles.ucsd.edu/tarik.benmarhnia
+    affiliation: UCSD & Scripps Institute
+    affiliation_url: https://benmarhniaresearch.ucsd.edu/
+  - name: Marie-Abèle Bind 
+    url: https://scholar.harvard.edu/marie-abele
+    affiliation: Biostatistics Center, Massachusetts General Hospital
+    affiliation_url: https://biostatistics.massgeneral.org/faculty/marie-abele-bind-phd/
+  - name: Léo Zabrocki 
+    url: https://lzabrocki.github.io/
+    affiliation: Paris School of Economics
+    affiliation_url: https://www.parisschoolofeconomics.eu/fr/zabrocki-leo/
+date: "`r Sys.Date()`"
+output: 
+    distill::distill_article:
+      toc: true
+      toc_depth: 3
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+# code chunk option
+knitr::opts_chunk$set(
+  fig.path = "images/",
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  dev = "CairoPNG",
+  dpi = 400
+)
+```
+
+<style>
+body {
+text-align: justify}
+</style>
+
+In this document, we describe the data sources and provide the codebook of the variables. **Should you have any questions, please do not hesitate to contact us at leo.zabrocki@psemail.eu**
+
+# Required Packages and Data Loading
+
+To reproduce exactly the `data_sources_codebook.html` document, we first need to have installed:
+
+* the [R](https://www.r-project.org/) programming language 
+* [RStudio](https://rstudio.com/), an integrated development environment for R, which will allow you to knit the `data_sources_codebook.Rmd` file and interact with the R code chunks
+* the [R Markdown](https://rmarkdown.rstudio.com/) package
+* and the [Distill](https://rstudio.github.io/distill/) package which provides the template for this document. 
+
+Once everything is set up, we load the following packages:
+
+```{r}
+# load required packages
+library(knitr) # for creating the R Markdown document
+library(here) # for files paths organization
+library(tidyverse) # for data manipulation and visualization
+library(DT) # for displaying the data as tables
+```
+
+We finally load the data:
+
+```{r}
+# load the data
+data <-
+  readRDS(here::here("inputs", "1.data", "environmental_data.rds"))
+```
+
+# Data Sources
+
+The dataset we use in our tutorial was gathered for a previous work by [Tarik Benmarhnia *et al.* (2015)](https://www.mdpi.com/1660-4601/12/9/11869).
+
+### Health Data
+
+All non-accidental deaths that occurred in the summers (June, July and August) of 1990-2007 were retrieved for the island of Montreal, Canada. The Quebec life table for Montreal for the years 2000 to 2002 was used to compute the total number of years of life lost (YLL).
+
+### Weather Data
+
+Daily mean outdoor temperatures (°C) and daily relative humidity (%) were obtained for the period 1981–2010 from Environment Canada meteorological observation station at the Montreal Pierre Elliott Trudeau International Airport. We defined a heat wave day as any day with daily maximum temperature exceeding 30°C following the defined threshold for triggering the “active watch” level in the Montreal Heat Action Plan.
+
+### Air Pollution Data
+
+We retrieved air pollution concentrations from the National Air Pollution Surveillance network of fixed-site monitors in Montreal (https://www.ec.gc.ca/rnspa-naps/). We averaged hourly concentrations over all stations and calculated daily (and lagged) mean concentrations for ozone (O3) and nitrogen dioxide (NO2).
+
+### Data Used in our Tutorial
+
+The final dataset contains 1376 daily observations for the summers of the 1990-2007 period and 23 variables. Over that period, `r sum(data$heat_wave)` occurred. Below are summary statistics for the variables:
+
+```{r, code_folding="Please show me the code!"}
+data %>%
+  select(yll, heat_wave, humidity_relative:o3, no2) %>%
+  pivot_longer(cols = everything(.), names_to = "Variable", values_to = "value") %>%
+  group_by(Variable) %>%
+  summarise(Mean = mean(value),
+            SD = sd(value),
+            Min = min(value),
+            Max = max(value)) %>%
+  kable(., align = c("l", "c", "c", "c", "c"))
+```
+
+# Codebook
+
+We load below the codebook of the data:
+
+```{r, code_folding="Please show me the code!"}
+# load the codebook
+read.csv(here::here("inputs", "1.data", "codebook.csv"), sep = ";") %>%
+  datatable(.)
+```
+
+
+
+
+
+

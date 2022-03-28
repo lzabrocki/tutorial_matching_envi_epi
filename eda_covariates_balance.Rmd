@@ -41,7 +41,7 @@ body {
 text-align: justify}
 </style>
 
-In this document, we provide all steps and R codes required to evaluate if days with heat wave are similar to days without heat wave for a set of confounding factors. **Should you have any questions, need help to reproduce the analysis or find coding errors, please do not hesitate to contact us at leo.zabrocki@psemail.eu**
+In this document, we provide all steps and R codes to evaluate if days with heat wave are similar to days without heat wave for a set of confounding factors. **Should you have any questions, need help to reproduce the analysis or find coding errors, please do not hesitate to contact us at leo.zabrocki@psemail.eu**.
 
 # Required Packages
 
@@ -494,13 +494,14 @@ To illustrate the issue of a lack of common support, we plot the YLL against the
 ```{r, fig.width=6, fig.height=4, code_folding="Please show me the code!"}
 # illustrate lack of support
 graph_lack_support_1 <- ggplot(data, aes(x = o3_lag_1, y = yll, colour = heat_wave)) +
-  geom_point(shape = 16, alpha = 0.5) +
+  geom_point(shape = 16, size = 0.8, alpha = 0.7) +
   scale_colour_manual(values = c(my_orange, my_blue)) +
   scale_x_continuous(breaks = scales::pretty_breaks(n = 8)) +
   labs(colour = "Group:") +
-  ggtitle("Lack of Support?") +
+  ggtitle("Lack of Support? YLL vs. Ozone in t-1") +
   xlab("O3 in t-1 (µg/m³)") + ylab("YLL") +
-  theme_tufte()
+  theme_tufte() +
+  guides(colour = guide_legend(override.aes = list(size = 3)))
 
 # display the graph
 graph_lack_support_1
@@ -509,8 +510,8 @@ graph_lack_support_1
 ggsave(
   graph_lack_support_1 + labs(title = NULL),
   filename = here::here("inputs", "3.outputs", "2.graphs", "graph_lack_support_1.pdf"),
-  width = 20,
-  height = 15,
+  width = 14,
+  height = 12,
   units = "cm",
   device = cairo_pdf
 )
@@ -526,7 +527,7 @@ graph_lack_support_2 <- ggplot(data, aes(x = o3_lag_1, y = yll, colour = heat_wa
   scale_x_continuous(breaks = scales::pretty_breaks(n = 8)) +
   facet_wrap(~ year) + 
   labs(colour = "Group:") +
-  ggtitle("Lack of Support?") +
+  ggtitle("Lack of Support? YLL vs. Ozone in t-1 by Year") +
   xlab("O3 in t-1 (µg/m³)") + ylab("YLL") +
   theme_tufte()
 
@@ -544,5 +545,68 @@ ggsave(
 )
 ```
 
-Again, there is a clear lack of common support within each year.
+Again, there is a clear lack of common support within each year. 
+
+
+Finally, we can also visualize the imbalance and lack of common support in the data by predicting, using a simple logistic model, the probability of an heat wave to occur for each day.
+
+```{r, fig.width=6, fig.height=4, code_folding="Please show me the code!"}
+# predict propensity scores
+logit_model <- data %>%
+  mutate(heat_wave = ifelse(heat_wave == "Days without Heat Wave", 0, 1)) %>%
+  glm(
+    heat_wave ~ heat_wave_lag_1 + heat_wave_lag_2 + heat_wave_lag_3 +
+      humidity_relative +
+      o3_lag_1 + o3_lag_2 + o3_lag_3 +
+      no2_lag_1 + no2_lag_2 + no2_lag_3 +
+      weekend + month + year,
+    family = "binomial",
+    data = .
+  )
+
+# add predicted probabilities
+data <- broom::augment(x = logit_model,
+                       newdata = data,
+                       type.predict = "response")
+
+# create the graph
+graph_lack_support_3 <- data %>%
+  ggplot(., aes(x = .fitted, colour = heat_wave)) +
+  xlim(0, 1) +
+  geom_density() +
+  scale_colour_manual(values = c(my_orange, my_blue)) +
+  labs(colour = "Group:") +
+  ggtitle("Lack of Support? Propensity Score Distributions") +
+  xlab("Predicted Probability of Treatment") + ylab("Density") +
+  theme_tufte()
+
+# display the graph
+graph_lack_support_3
+
+# save the graph
+ggsave(
+  graph_lack_support_3 + labs(title = NULL),
+  filename = here::here("inputs", "3.outputs", "2.graphs", "graph_lack_support_3.pdf"),
+  width = 14,
+  height = 10,
+  units = "cm",
+  device = cairo_pdf
+)
+```
+
+We can see on this graph that the two density distributions do not overlap. We display below the summary statistics of the two distributions:
+
+```{r, code_folding="Please show me the code!"}
+data %>%
+  group_by(heat_wave) %>%
+  summarise(
+    Mean = mean(.fitted),
+    SD = sd(.fitted),
+    Min = min(.fitted),
+    Max = max(.fitted)
+  ) %>%
+  mutate_at(vars(-heat_wave), ~ round(., 2)) %>%
+  kable(., align = c("l", "c", "c", "c"))
+```
+
 

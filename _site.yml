@@ -13,6 +13,7 @@ navbar:
     - text: "Data"
       menu: 
         - text: "Sources and Codebook"
+          href: data_sources_codebook.html
         - text: "EDA" 
           href: eda_covariates_balance.html
     - text: "Standard Approach"

@@ -1,0 +1,24 @@
+Variable;Definition
+id;index of the daily unit
+date;date in year-month-day format
+weekday;day of the week
+weekend;dummy equal to 1 if the unit belongs to a weekend and to 0 otherwise
+month;month of the unit
+year;year of the unit
+yll;years of life lost
+heat_wave;dummy equal to 1 if a heat wave occurred in time t and to 0 otherwise
+heat_wave_lag_1;dummy equal to 1 if a heat wave occurred in time t-1 and to 0 otherwise
+heat_wave_lag_2;dummy equal to 1 if a heat wave occurred in time t-2 and to 0 otherwise
+heat_wave_lag_3;dummy equal to 1 if a heat wave occurred in time t-3 and to 0 otherwise
+humidity_relative;relative humidity in %
+temperature_average;average temperature in °C
+temperature_maximum;maximum temperature in °C
+temperature_minimum;minimum temperature in °C
+o3;ozone concentration in time t in ?g/m³
+o3_lag_1;ozone concentration in time t-1 in ?g/m³
+o3_lag_2;ozone concentration in time t-2 in ?g/m³
+o3_lag_3;ozone concentration in time t-3 in ?g/m³
+no2;nitrogen dioxide concentration in time t in ?g/m³
+no2_lag_1;nitrogen dioxide concentration in time t-1 in ?g/m³
+no2_lag_2;nitrogen dioxide concentration in time t-2 in ?g/m³
+no2_lag_3;nitrogen dioxide concentration in time t-3 in ?g/m³

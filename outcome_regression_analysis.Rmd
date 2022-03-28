@@ -38,7 +38,7 @@ body {
 text-align: justify}
 </style>
 
-In this document, we provide all steps and R codes required to analyse the effect of heat waves on the number of years of life lost (YLL ) using an outcome regression approach. This is often the standard procedure followed by researchers in environmental epidemiology: covariates balance is not discussed and confounding variables are adjusted for with a multivariate regression model. **Should you have any questions, need help to reproduce the analysis or find coding errors, please do not hesitate to contact us at leo.zabrocki@psemail.eu**
+In this document, we provide all steps and R codes required to analyse the effect of heat waves on the number of years of life lost (YLL ) using an outcome regression approach. This is often the standard procedure followed by researchers in environmental epidemiology: covariates balance is not discussed and confounding variables are adjusted for with a multivariate regression model. **Should you have any questions, need help to reproduce the analysis or find coding errors, please do not hesitate to contact us at leo.zabrocki@psemail.eu**.
 
 # Required Packages
 
@@ -158,7 +158,7 @@ The estimate for the effect of heat waves on YLL  is equal to + `r round(output_
 
 ### Regression Analysis with Adjustment for Confounders
 
-We finally run a regression where we adjust for potential confounders such as calendar variables (i.e., the month, the year and their interaction), weather parameters (i.e., the relative humidity) and lags of air pollutants (i.e., NO$_{2}$ and O$_{3}$). We also include variables such as the day of the week as it is good predictor of the outcome. This regression model can be written such that:
+We finally run a regression where we adjust for potential confounders such as calendar variables (i.e., the month, the year and their interaction), weather parameters (i.e., the relative humidity) and lags of air pollutants (i.e., NO$_{2}$ and O$_{3}$). We also include variables such as the weekend as it is good predictor of the outcome. This regression model can be written such that:
 
 $\text{YLL }_{t} = \alpha + \beta\text{HW}_{t} + \theta\text{Hum}_{t} + \textbf{P}_{t-1:t-3}\phi + \textbf{C}_{t}\gamma + \epsilon_{t}$
 
@@ -171,7 +171,7 @@ output_adjusted_regression <- data %>%
        humidity_relative + 
        o3_lag_1 + o3_lag_2 + o3_lag_3 + 
        no2_lag_1 + no2_lag_2 + no2_lag_3 + 
-       weekday + month*as.factor(year),
+       weekend + month*as.factor(year),
      data = .) %>%
   tidy(., conf.int = TRUE) %>%
   filter(term == "heat_wave") %>%

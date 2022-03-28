@@ -42,7 +42,7 @@ text-align: justify}
 </style>
 
 
-In this document, we provide all steps and R codes required to estimate the effect of heat waves of the number of years of life lost (YLL) using a recently developed constrained pair matching algorithm. Compared to propensity score matching, we can choose the maximum distance allowed between treated and control units for each covariate. The coding procedure is a bit more involved as it has not been formatted in an R package yet. **Should you have any questions, need help to reproduce the analysis or find coding errors, please do not hesitate to contact us at leo.zabrocki@psemail.eu**
+In this document, we provide all steps and R codes required to estimate the effect of heat waves of the number of years of life lost (YLL) using a recently developed constrained pair matching algorithm. Compared to propensity score matching, we can choose the maximum distance allowed between treated and control units for each covariate. The coding procedure is a bit more involved as it has not been formatted in an R package yet. **Should you have any questions, need help to reproduce the analysis or find coding errors, please do not hesitate to contact us at leo.zabrocki@psemail.eu**.
 
 # Required Packages and Data Loading
 
@@ -541,7 +541,7 @@ results_cpm_wo_cov %>%
   kable(., align = c("l", "c", "c", "c"))
 ```
 
-We find that the average effect on the treated is equal to +`r results_cpm_wo_cov$estimate` years of life lost. The 95% confidence interval is however wide and is consistent with effects ranging from +`r results_cpm_wo_cov$conf.low` up to +`r results_cpm_wo_cov$conf.high`. If we want to increase the precision of our estimate and remove any remaining imbalance in covariates, we can also run a multivariate regression. We adjust below for the same variables used in the propensity score matching procedure and the day of the week:
+We find that the average effect on the treated is equal to +`r results_cpm_wo_cov$estimate` years of life lost. The 95% confidence interval is however wide and is consistent with effects ranging from +`r results_cpm_wo_cov$conf.low` YLL. up to +`r results_cpm_wo_cov$conf.high` YLL.. If we want to increase the precision of our estimate and remove any remaining imbalance in covariates, we can also run a multivariate regression. We adjust below for the same variables used in the propensity score matching procedure and the day of the week:
 
 ```{r}
 # we fit the regression model
@@ -571,7 +571,7 @@ results_cpm_w_cov %>%
   kable(., align = c("l", "c", "c", "c"))
 ```
 
-We find that the average effect on the treated is equal to +`r results_cpm_w_cov$estimate` years of life lost. The 95% confidence interval is consistent with effects ranging from +`r results_cpm_w_cov$conf.low` up to +`r results_cpm_w_cov$conf.high`. The width of confidence interval is now equal to `r results_cpm_w_cov$conf.high - results_cpm_w_cov$conf.low`, which is smaller than the previous interval of `r results_cpm_wo_cov$conf.high - results_cpm_wo_cov$conf.low`.
+We find that the average effect on the treated is equal to +`r results_cpm_w_cov$estimate` years of life lost. The 95% confidence interval is consistent with effects ranging from +`r results_cpm_w_cov$conf.low` YLL up to +`r results_cpm_w_cov$conf.high` YLL. The width of confidence interval is now equal to `r results_cpm_w_cov$conf.high - results_cpm_w_cov$conf.low` YLL, which is just a bit smaller than the previous interval of `r results_cpm_wo_cov$conf.high - results_cpm_wo_cov$conf.low` YLL.
 
 We finally save the data on constrained pair matching results in the `3.outputs/1.data/analysis_results` folder.
 
