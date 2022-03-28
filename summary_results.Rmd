@@ -1,5 +1,5 @@
 ---
-title: "Summary of Results "
+title: "Summary of Results"
 description: |
   Detailled Script.
 author:
