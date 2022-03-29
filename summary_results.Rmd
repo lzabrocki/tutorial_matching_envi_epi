@@ -59,6 +59,7 @@ Once everything is set up, we load the following packages:
 library(knitr) # for creating the R Markdown document
 library(here) # for files paths organization
 library(tidyverse) # for data manipulation and visualization
+library(Cairo) # for printing custom police of graphs
 ```
 
 We load our custom `ggplot2` theme for graphs:
