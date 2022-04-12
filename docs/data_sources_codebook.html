@@ -93,8 +93,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2022-03-29"/>
-  <meta property="article:created" itemprop="dateCreated" content="2022-03-29"/>
+  <meta property="article:published" itemprop="datePublished" content="2022-04-12"/>
+  <meta property="article:created" itemprop="dateCreated" content="2022-04-12"/>
   <meta name="article:author" content="Tarik Benmarhnia"/>
   <meta name="article:author" content="Marie-Abèle Bind"/>
   <meta name="article:author" content="Léo Zabrocki"/>
@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","editor_options"]}},"value":[{"type":"character","attributes":{},"value":["Data Sources & Codebook"]},{"type":"character","attributes":{},"value":["Detailled Script.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Tarik Benmarhnia"]},{"type":"character","attributes":{},"value":["https://profiles.ucsd.edu/tarik.benmarhnia"]},{"type":"character","attributes":{},"value":["UCSD & Scripps Institute"]},{"type":"character","attributes":{},"value":["https://benmarhniaresearch.ucsd.edu/"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Marie-Abèle Bind"]},{"type":"character","attributes":{},"value":["https://scholar.harvard.edu/marie-abele"]},{"type":"character","attributes":{},"value":["Biostatistics Center, Massachusetts General Hospital"]},{"type":"character","attributes":{},"value":["https://biostatistics.massgeneral.org/faculty/marie-abele-bind-phd/"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Léo Zabrocki"]},{"type":"character","attributes":{},"value":["https://lzabrocki.github.io/"]},{"type":"character","attributes":{},"value":["Paris School of Economics"]},{"type":"character","attributes":{},"value":["https://www.parisschoolofeconomics.eu/fr/zabrocki-leo/"]}]}]},{"type":"character","attributes":{},"value":["2022-03-29"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["chunk_output_type"]}},"value":[{"type":"character","attributes":{},"value":["console"]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","editor_options"]}},"value":[{"type":"character","attributes":{},"value":["Data Sources & Codebook"]},{"type":"character","attributes":{},"value":["Detailled Script.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Tarik Benmarhnia"]},{"type":"character","attributes":{},"value":["https://profiles.ucsd.edu/tarik.benmarhnia"]},{"type":"character","attributes":{},"value":["UCSD & Scripps Institute"]},{"type":"character","attributes":{},"value":["https://benmarhniaresearch.ucsd.edu/"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Marie-Abèle Bind"]},{"type":"character","attributes":{},"value":["https://scholar.harvard.edu/marie-abele"]},{"type":"character","attributes":{},"value":["Biostatistics Center, Massachusetts General Hospital"]},{"type":"character","attributes":{},"value":["https://biostatistics.massgeneral.org/faculty/marie-abele-bind-phd/"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Léo Zabrocki"]},{"type":"character","attributes":{},"value":["https://lzabrocki.github.io/"]},{"type":"character","attributes":{},"value":["Paris School of Economics"]},{"type":"character","attributes":{},"value":["https://www.parisschoolofeconomics.eu/fr/zabrocki-leo/"]}]}]},{"type":"character","attributes":{},"value":["2022-04-12"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["chunk_output_type"]}},"value":[{"type":"character","attributes":{},"value":["console"]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -466,265 +466,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
   <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
   <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
-  <script src="site_libs/autocomplete-0.37.1/autocomplete.min.js"></script>
-  <script src="site_libs/fuse-6.4.1/fuse.min.js"></script>
-
-  <script type="application/javascript">
-
-  function getMeta(metaName) {
-    var metas = document.getElementsByTagName('meta');
-    for (let i = 0; i < metas.length; i++) {
-      if (metas[i].getAttribute('name') === metaName) {
-        return metas[i].getAttribute('content');
-      }
-    }
-    return '';
-  }
-
-  function offsetURL(url) {
-    var offset = getMeta('distill:offset');
-    return offset ? offset + '/' + url : url;
-  }
-
-  function createFuseIndex() {
-
-    // create fuse index
-    var options = {
-      keys: [
-        { name: 'title', weight: 20 },
-        { name: 'categories', weight: 15 },
-        { name: 'description', weight: 10 },
-        { name: 'contents', weight: 5 },
-      ],
-      ignoreLocation: true,
-      threshold: 0
-    };
-    var fuse = new window.Fuse([], options);
-
-    // fetch the main search.json
-    return fetch(offsetURL('search.json'))
-      .then(function(response) {
-        if (response.status == 200) {
-          return response.json().then(function(json) {
-            // index main articles
-            json.articles.forEach(function(article) {
-              fuse.add(article);
-            });
-            // download collections and index their articles
-            return Promise.all(json.collections.map(function(collection) {
-              return fetch(offsetURL(collection)).then(function(response) {
-                if (response.status === 200) {
-                  return response.json().then(function(articles) {
-                    articles.forEach(function(article) {
-                      fuse.add(article);
-                    });
-                  })
-                } else {
-                  return Promise.reject(
-                    new Error('Unexpected status from search index request: ' +
-                              response.status)
-                  );
-                }
-              });
-            })).then(function() {
-              return fuse;
-            });
-          });
-
-        } else {
-          return Promise.reject(
-            new Error('Unexpected status from search index request: ' +
-                        response.status)
-          );
-        }
-      });
-  }
-
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-
-    // get search element (bail if we don't have one)
-    var searchEl = window.document.getElementById('distill-search');
-    if (!searchEl)
-      return;
-
-    createFuseIndex()
-      .then(function(fuse) {
-
-        // make search box visible
-        searchEl.classList.remove('hidden');
-
-        // initialize autocomplete
-        var options = {
-          autoselect: true,
-          hint: false,
-          minLength: 2,
-        };
-        window.autocomplete(searchEl, options, [{
-          source: function(query, callback) {
-            const searchOptions = {
-              isCaseSensitive: false,
-              shouldSort: true,
-              minMatchCharLength: 2,
-              limit: 10,
-            };
-            var results = fuse.search(query, searchOptions);
-            callback(results
-              .map(function(result) { return result.item; })
-            );
-          },
-          templates: {
-            suggestion: function(suggestion) {
-              var img = suggestion.preview && Object.keys(suggestion.preview).length > 0
-                ? `<img src="${offsetURL(suggestion.preview)}"</img>`
-                : '';
-              var html = `
-                <div class="search-item">
-                  <h3>${suggestion.title}</h3>
-                  <div class="search-item-description">
-                    ${suggestion.description || ''}
-                  </div>
-                  <div class="search-item-preview">
-                    ${img}
-                  </div>
-                </div>
-              `;
-              return html;
-            }
-          }
-        }]).on('autocomplete:selected', function(event, suggestion) {
-          window.location.href = offsetURL(suggestion.path);
-        });
-        // remove inline display style on autocompleter (we want to
-        // manage responsive display via css)
-        $('.algolia-autocomplete').css("display", "");
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-
-  });
-
-  </script>
-
-  <style type="text/css">
-
-  .nav-search {
-    font-size: x-small;
-  }
-
-  /* Algolioa Autocomplete */
-
-  .algolia-autocomplete {
-    display: inline-block;
-    margin-left: 10px;
-    vertical-align: sub;
-    background-color: white;
-    color: black;
-    padding: 6px;
-    padding-top: 8px;
-    padding-bottom: 0;
-    border-radius: 6px;
-    border: 1px #0F2E3D solid;
-    width: 180px;
-  }
-
-
-  @media screen and (max-width: 768px) {
-    .distill-site-nav .algolia-autocomplete {
-      display: none;
-      visibility: hidden;
-    }
-    .distill-site-nav.responsive .algolia-autocomplete {
-      display: inline-block;
-      visibility: visible;
-    }
-    .distill-site-nav.responsive .algolia-autocomplete .aa-dropdown-menu {
-      margin-left: 0;
-      width: 400px;
-      max-height: 400px;
-    }
-  }
-
-  .algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
-    width: 90%;
-    outline: none;
-    border: none;
-  }
-
-  .algolia-autocomplete .aa-hint {
-    color: #999;
-  }
-  .algolia-autocomplete .aa-dropdown-menu {
-    width: 550px;
-    max-height: 70vh;
-    overflow-x: visible;
-    overflow-y: scroll;
-    padding: 5px;
-    margin-top: 3px;
-    margin-left: -150px;
-    background-color: #fff;
-    border-radius: 5px;
-    border: 1px solid #999;
-    border-top: none;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
-    cursor: pointer;
-    padding: 5px 4px;
-    border-bottom: 1px solid #eee;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion:last-of-type {
-    border-bottom: none;
-    margin-bottom: 2px;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item {
-    overflow: hidden;
-    font-size: 0.8em;
-    line-height: 1.4em;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item h3 {
-    font-size: 1rem;
-    margin-block-start: 0;
-    margin-block-end: 5px;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-description {
-    display: inline-block;
-    overflow: hidden;
-    height: 2.8em;
-    width: 80%;
-    margin-right: 4%;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview {
-    display: inline-block;
-    width: 15%;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img {
-    height: 3em;
-    width: auto;
-    display: none;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img[src] {
-    display: initial;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
-    background-color: #eee;
-  }
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
-    font-weight: bold;
-    font-style: normal;
-  }
-
-  </style>
-
-
   <!--/radix_placeholder_navigation_in_header-->
   <!--radix_placeholder_distill-->
 
@@ -2120,8 +1861,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   /*-- Additional custom styles --*/
   /* Add any additional CSS rules below                      */
   </style>
-  <style type="text/css">
-  /* base variables */
+  <style type="text/css">/* base variables */
 
   /* Edit the CSS properties in this file to create a custom
      Distill theme. Only edit values in the right column
@@ -2136,18 +1876,14 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   /* Optional: embed custom fonts here with `@import`          */
   /* This must remain at the top of this file.                 */
   @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed');
-  @import url('https://fonts.googleapis.com/css2?family=Roboto');
-  @import url('https://fonts.googleapis.com/css2?family=Fira+Sans');
   @import url('https://fonts.googleapis.com/css2?family=Oswald');
-  @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro');
-  @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono');
   @import url('https://fonts.googleapis.com/css2?family=Fira+Mono');
 
   html {
     /*-- Main font sizes --*/
     --title-size:      50px;
     --body-size:       20px;
-    --code-size:       12px;
+    --code-size:       14px;
     --aside-size:      12px;
     --fig-cap-size:    13px;
     /*-- Main font colors --*/
@@ -2222,9 +1958,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     color: #0471a6;
   }
 
-  pre.r {
-    background-color: #F8F8F8;
+  /* Postcard headers */
+  h1, h2, h3 {
+    color: #0471a6;
   }
+
 
   /* Buttons on home page */
 
@@ -2243,8 +1981,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   aside {
       float: right;
       color: blue;
-  }
-  </style>
+  }</style>
   <style type="text/css">
   /* base style */
 
@@ -2429,7 +2166,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Data Sources & Codebook","description":"Detailled Script.","authors":[{"author":"Tarik Benmarhnia","authorURL":"https://profiles.ucsd.edu/tarik.benmarhnia","affiliation":"UCSD & Scripps Institute","affiliationURL":"https://benmarhniaresearch.ucsd.edu/","orcidID":""},{"author":"Marie-Abèle Bind","authorURL":"https://scholar.harvard.edu/marie-abele","affiliation":"Biostatistics Center, Massachusetts General Hospital","affiliationURL":"https://biostatistics.massgeneral.org/faculty/marie-abele-bind-phd/","orcidID":""},{"author":"Léo Zabrocki","authorURL":"https://lzabrocki.github.io/","affiliation":"Paris School of Economics","affiliationURL":"https://www.parisschoolofeconomics.eu/fr/zabrocki-leo/","orcidID":""}],"publishedDate":"2022-03-29T00:00:00.000+02:00","citationText":"Benmarhnia, et al., 2022"}
+{"title":"Data Sources & Codebook","description":"Detailled Script.","authors":[{"author":"Tarik Benmarhnia","authorURL":"https://profiles.ucsd.edu/tarik.benmarhnia","affiliation":"UCSD & Scripps Institute","affiliationURL":"https://benmarhniaresearch.ucsd.edu/","orcidID":""},{"author":"Marie-Abèle Bind","authorURL":"https://scholar.harvard.edu/marie-abele","affiliation":"Biostatistics Center, Massachusetts General Hospital","affiliationURL":"https://biostatistics.massgeneral.org/faculty/marie-abele-bind-phd/","orcidID":""},{"author":"Léo Zabrocki","authorURL":"https://lzabrocki.github.io/","affiliation":"Paris School of Economics","affiliationURL":"https://www.parisschoolofeconomics.eu/fr/zabrocki-leo/","orcidID":""}],"publishedDate":"2022-04-12T00:00:00.000+02:00","citationText":"Benmarhnia, et al., 2022"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2441,8 +2178,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <div class="nav-right">
 <a href="index.html">Home</a>
-<span class="nav-dropdown-header">Intuition</span>
-<a href="intuition.html"></a>
+<a href="intuition.html">Intuition</a>
 <div class="nav-dropdown">
 <button class="nav-dropbtn">
 Data
@@ -2462,16 +2198,15 @@ Matching
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
-<span class="nav-dropdown-header">Propensity Score Matching</span>
-<a href="propensity_score_matching.html"></a>
-<span class="nav-dropdown-header">Coarsened Exact Matching</span>
-<a href="coarsened_exact_matching.html"></a>
-<span class="nav-dropdown-header">Constrained Pair Matching</span>
-<a href="constrained_pair_matching.html"></a>
+<a href="propensity_score_matching.html">Propensity Score Matching</a>
+<a href="coarsened_exact_matching.html">Coarsened Exact Matching</a>
+<a href="constrained_pair_matching.html">Constrained Pair Matching</a>
 </div>
 </div>
-<span class="nav-dropdown-header">Summary</span>
-<a href="summary_results.html"></a>
+<a href="summary_results.html">Summary</a>
+<a href="https://github.com/lzabrocki/tutorial_matching_envi_epi" aria-label="Link to source">
+<i class="fab fa-github" aria-hidden="true"></i>
+</a>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
 </div>
 </nav>
@@ -2494,7 +2229,7 @@ Matching
   
 ,   Léo Zabrocki <a href="https://lzabrocki.github.io/" class="uri">https://lzabrocki.github.io/</a> (Paris School of Economics)<a href="https://www.parisschoolofeconomics.eu/fr/zabrocki-leo/" class="uri">https://www.parisschoolofeconomics.eu/fr/zabrocki-leo/</a>
   
-<br/>2022-03-29
+<br/>2022-04-12
 </div>
 
 <div class="d-article">
@@ -2659,8 +2394,8 @@ Please show me the code!
 </code></pre>
 </div>
 </details>
-<div id="htmlwidget-7ca2d1ec48baeb4c490d" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7ca2d1ec48baeb4c490d">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23"],["id","date","weekday","weekend","month","year","yll","heat_wave","heat_wave_lag_1","heat_wave_lag_2","heat_wave_lag_3","humidity_relative","temperature_average","temperature_maximum","temperature_minimum","o3","o3_lag_1","o3_lag_2","o3_lag_3","no2","no2_lag_1","no2_lag_2","no2_lag_3"],["index of the daily unit","date in year-month-day format","day of the week","dummy equal to 1 if the unit belongs to a weekend and to 0 otherwise","month of the unit","year of the unit","years of life lost","dummy equal to 1 if a heat wave occurred in time t and to 0 otherwise","dummy equal to 1 if a heat wave occurred in time t-1 and to 0 otherwise","dummy equal to 1 if a heat wave occurred in time t-2 and to 0 otherwise","dummy equal to 1 if a heat wave occurred in time t-3 and to 0 otherwise","relative humidity in %","average temperature in °C","maximum temperature in °C","minimum temperature in °C","ozone concentration in time t in ?g/m³","ozone concentration in time t-1 in ?g/m³","ozone concentration in time t-2 in ?g/m³","ozone concentration in time t-3 in ?g/m³","nitrogen dioxide concentration in time t in ?g/m³","nitrogen dioxide concentration in time t-1 in ?g/m³","nitrogen dioxide concentration in time t-2 in ?g/m³","nitrogen dioxide concentration in time t-3 in ?g/m³"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Variable<\/th>\n      <th>Definition<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c52d72ca624ef5a91668" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c52d72ca624ef5a91668">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23"],["id","date","weekday","weekend","month","year","yll","heat_wave","heat_wave_lag_1","heat_wave_lag_2","heat_wave_lag_3","humidity_relative","temperature_average","temperature_maximum","temperature_minimum","o3","o3_lag_1","o3_lag_2","o3_lag_3","no2","no2_lag_1","no2_lag_2","no2_lag_3"],["index of the daily unit","date in year-month-day format","day of the week","dummy equal to 1 if the unit belongs to a weekend and to 0 otherwise","month of the unit","year of the unit","years of life lost","dummy equal to 1 if a heat wave occurred in time t and to 0 otherwise","dummy equal to 1 if a heat wave occurred in time t-1 and to 0 otherwise","dummy equal to 1 if a heat wave occurred in time t-2 and to 0 otherwise","dummy equal to 1 if a heat wave occurred in time t-3 and to 0 otherwise","relative humidity in %","average temperature in °C","maximum temperature in °C","minimum temperature in °C","ozone concentration in time t in ?g/m³","ozone concentration in time t-1 in ?g/m³","ozone concentration in time t-2 in ?g/m³","ozone concentration in time t-3 in ?g/m³","nitrogen dioxide concentration in time t in ?g/m³","nitrogen dioxide concentration in time t-1 in ?g/m³","nitrogen dioxide concentration in time t-2 in ?g/m³","nitrogen dioxide concentration in time t-3 in ?g/m³"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Variable<\/th>\n      <th>Definition<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}]}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
@@ -2674,7 +2409,10 @@ Please show me the code!
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->
 <!--radix_placeholder_appendices-->
-<div class="appendix-bottom"></div>
+<div class="appendix-bottom">
+<h3 id="updates-and-corrections">Corrections</h3>
+<p>If you see mistakes or want to suggest changes, please <a href="https://github.com/lzabrocki/tutorial_matching_envi_epi/issues/new">create an issue</a> on the source repository.</p>
+</div>
 <!--/radix_placeholder_appendices-->
 <!--radix_placeholder_navigation_after_body-->
 <!--/radix_placeholder_navigation_after_body-->

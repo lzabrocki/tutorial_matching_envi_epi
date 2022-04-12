@@ -11,25 +11,6 @@ output:
 site: distill::distill_website
 ---
 
-```{css echo=FALSE}
-a:link {
-  color: #0471a6;
-}
-
-a:hover {
-  color: #f4a261;
-}
-
-a:visited {
-  color: #0471a6;
-}
-
-h1 {
-  color: #0471a6;
-}
-```
-
-<DIV align="justify">
 
 Hello and welcome!
 
@@ -47,7 +28,6 @@ The website is structured as follows:
 * The <span style="color:#0471a6">Summary</span> tabs gathers all results found with the different procedures.
 * All the R code for this tutorial is available in its GitHub directory.
 
-</DIV>
 
 
 

@@ -22,7 +22,7 @@ output:
       toc_depth: 3
 ---
 
-```{r setup, include=FALSE}
+```{r, include=FALSE}
 # code chunk option
 knitr::opts_chunk$set(
   echo = TRUE,
