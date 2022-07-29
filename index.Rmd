@@ -21,12 +21,12 @@ To illustrate how matching procedures work, we study the effect of heat waves on
 
 The website is structured as follows:
 
-* A PDF version of the current version of the paper is accessible through the <span style="color:#0471a6">Paper</span>.
+* A PDF version of the working paper is accessible through the <span style="color:#0471a6">Paper</span>.
 * The <span style="color:#0471a6">Data</span> tab describes the sources of the data and the definition of the variables. It also contains a detailed exploratory data analysis of the covariates balance.
 * The <span style="color:#0471a6">Standard Approach</span> tab presents results found with an outcome regression model.
-* The <span style="color:#0471a6">Matching</span> tab contains the analysis of three matching procedures: propensity score matching, coarsened exact matching and constrained pair matching.
+* The <span style="color:#0471a6">Matching</span> tab contains the analysis of three matching procedures: propensity score matching, coarsened exact matching and cardinality matching.
 * The <span style="color:#0471a6">Summary</span> tabs gathers all results found with the different procedures.
-* All the R code for this tutorial is available in its GitHub directory.
+* All the R code for this tutorial is available in its GitHub directory and in an [Open Science Framework repository](https://osf.io/tvdnf/).
 
 
 

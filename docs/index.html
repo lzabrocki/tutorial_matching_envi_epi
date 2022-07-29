@@ -11,7 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
     <style type="text/css">body {font-family: 'Roboto Slab', serif;}</style>
 
-    <title>Matching Methods for Environmental Epidemiology: A Tutorial</title>
+    <title>Matching Methods for Environmental Epidemiology: A
+Tutorial</title>
 
     
           <!--radix_placeholder_navigation_in_header-->
@@ -760,7 +761,7 @@
           <div class="nav-dropdown-content">
           <a href="propensity_score_matching.html">Propensity Score Matching</a>
           <a href="coarsened_exact_matching.html">Coarsened Exact Matching</a>
-          <a href="constrained_pair_matching.html">Constrained Pair Matching</a>
+          <a href="cardinality_matching.html">Cardinality Matching</a>
           </div>
           </div>
           <a href="summary_results.html">Summary</a>
@@ -783,7 +784,8 @@
               <img src=inputs/3.outputs/cover_picture.png style="height:15rem" class="rounded">
             </div>
             <div class="p-2">
-              <h1>Matching Methods for Environmental Epidemiology: A Tutorial</h1>
+              <h1>Matching Methods for Environmental Epidemiology: A
+Tutorial</h1>
             </div>
             <hr style="width:60%;"/>
             <div class="p-2">
@@ -811,16 +813,39 @@
 <div class="d-flex flex-column col px-5 align-items-center align-self-center mh-100" style="overflow-y: none;">
           <div class="my-5" id="content">
             <p>Hello and welcome!</p>
-            <p>This website gathers all the materials for the paper <em>Matching Methods for Environmental Epidemiology: A Tutorial</em> by <a href="https://profiles.ucsd.edu/tarik.benmarhnia">Tarik Benmarhnia</a>, <a href="https://biostatistics.massgeneral.org/faculty/marie-abele-bind-phd/">Marie-Abèle Bind</a>, and <a href="https://lzabrocki.github.io/">Léo Zabrocki</a>.</p>
-            <p>To illustrate how matching procedures work, we study the effect of heat waves on daily number of years of life lost (YLL) in Montreal over the 1990-2007 period.</p>
+            <p>This website gathers all the materials for the paper
+            <em>Matching Methods for Environmental Epidemiology: A
+            Tutorial</em> by <a
+            href="https://profiles.ucsd.edu/tarik.benmarhnia">Tarik
+            Benmarhnia</a>, <a
+            href="https://biostatistics.massgeneral.org/faculty/marie-abele-bind-phd/">Marie-Abèle
+            Bind</a>, and <a href="https://lzabrocki.github.io/">Léo
+            Zabrocki</a>.</p>
+            <p>To illustrate how matching procedures work, we study the
+            effect of heat waves on daily number of years of life lost
+            (YLL) in Montreal over the 1990-2007 period.</p>
             <p>The website is structured as follows:</p>
             <ul>
-            <li>A PDF version of the current version of the paper is accessible through the <span style="color:#0471a6">Paper</span>.</li>
-            <li>The <span style="color:#0471a6">Data</span> tab describes the sources of the data and the definition of the variables. It also contains a detailed exploratory data analysis of the covariates balance.</li>
-            <li>The <span style="color:#0471a6">Standard Approach</span> tab presents results found with an outcome regression model.</li>
-            <li>The <span style="color:#0471a6">Matching</span> tab contains the analysis of three matching procedures: propensity score matching, coarsened exact matching and constrained pair matching.</li>
-            <li>The <span style="color:#0471a6">Summary</span> tabs gathers all results found with the different procedures.</li>
-            <li>All the R code for this tutorial is available in its GitHub directory.</li>
+            <li>A PDF version of the working paper is accessible through
+            the <span style="color:#0471a6">Paper</span>.</li>
+            <li>The <span style="color:#0471a6">Data</span> tab
+            describes the sources of the data and the definition of the
+            variables. It also contains a detailed exploratory data
+            analysis of the covariates balance.</li>
+            <li>The <span style="color:#0471a6">Standard Approach</span>
+            tab presents results found with an outcome regression
+            model.</li>
+            <li>The <span style="color:#0471a6">Matching</span> tab
+            contains the analysis of three matching procedures:
+            propensity score matching, coarsened exact matching and
+            cardinality matching.</li>
+            <li>The <span style="color:#0471a6">Summary</span> tabs
+            gathers all results found with the different
+            procedures.</li>
+            <li>All the R code for this tutorial is available in its
+            GitHub directory and in an <a
+            href="https://osf.io/tvdnf/">Open Science Framework
+            repository</a>.</li>
             </ul>
           </div>
         </div>
@@ -835,7 +860,8 @@
               <img src=inputs/3.outputs/cover_picture.png style="height:15rem" class="rounded">
             </div>
             <div class="p-2 text-center">
-              <h1>Matching Methods for Environmental Epidemiology: A Tutorial</h1>
+              <h1>Matching Methods for Environmental Epidemiology: A
+Tutorial</h1>
             </div>
             <hr style="width:60%;"/>
 
@@ -857,16 +883,39 @@
             </div>
             <div class="p pt-4 px-5">
               <p>Hello and welcome!</p>
-              <p>This website gathers all the materials for the paper <em>Matching Methods for Environmental Epidemiology: A Tutorial</em> by <a href="https://profiles.ucsd.edu/tarik.benmarhnia">Tarik Benmarhnia</a>, <a href="https://biostatistics.massgeneral.org/faculty/marie-abele-bind-phd/">Marie-Abèle Bind</a>, and <a href="https://lzabrocki.github.io/">Léo Zabrocki</a>.</p>
-              <p>To illustrate how matching procedures work, we study the effect of heat waves on daily number of years of life lost (YLL) in Montreal over the 1990-2007 period.</p>
+              <p>This website gathers all the materials for the paper
+              <em>Matching Methods for Environmental Epidemiology: A
+              Tutorial</em> by <a
+              href="https://profiles.ucsd.edu/tarik.benmarhnia">Tarik
+              Benmarhnia</a>, <a
+              href="https://biostatistics.massgeneral.org/faculty/marie-abele-bind-phd/">Marie-Abèle
+              Bind</a>, and <a href="https://lzabrocki.github.io/">Léo
+              Zabrocki</a>.</p>
+              <p>To illustrate how matching procedures work, we study
+              the effect of heat waves on daily number of years of life
+              lost (YLL) in Montreal over the 1990-2007 period.</p>
               <p>The website is structured as follows:</p>
               <ul>
-              <li>A PDF version of the current version of the paper is accessible through the <span style="color:#0471a6">Paper</span>.</li>
-              <li>The <span style="color:#0471a6">Data</span> tab describes the sources of the data and the definition of the variables. It also contains a detailed exploratory data analysis of the covariates balance.</li>
-              <li>The <span style="color:#0471a6">Standard Approach</span> tab presents results found with an outcome regression model.</li>
-              <li>The <span style="color:#0471a6">Matching</span> tab contains the analysis of three matching procedures: propensity score matching, coarsened exact matching and constrained pair matching.</li>
-              <li>The <span style="color:#0471a6">Summary</span> tabs gathers all results found with the different procedures.</li>
-              <li>All the R code for this tutorial is available in its GitHub directory.</li>
+              <li>A PDF version of the working paper is accessible
+              through the <span style="color:#0471a6">Paper</span>.</li>
+              <li>The <span style="color:#0471a6">Data</span> tab
+              describes the sources of the data and the definition of
+              the variables. It also contains a detailed exploratory
+              data analysis of the covariates balance.</li>
+              <li>The <span style="color:#0471a6">Standard
+              Approach</span> tab presents results found with an outcome
+              regression model.</li>
+              <li>The <span style="color:#0471a6">Matching</span> tab
+              contains the analysis of three matching procedures:
+              propensity score matching, coarsened exact matching and
+              cardinality matching.</li>
+              <li>The <span style="color:#0471a6">Summary</span> tabs
+              gathers all results found with the different
+              procedures.</li>
+              <li>All the R code for this tutorial is available in its
+              GitHub directory and in an <a
+              href="https://osf.io/tvdnf/">Open Science Framework
+              repository</a>.</li>
               </ul>
             </div>
         </div>

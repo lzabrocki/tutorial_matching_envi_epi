@@ -13,8 +13,8 @@ author:
     affiliation_url: https://biostatistics.massgeneral.org/faculty/marie-abele-bind-phd/
   - name: Léo Zabrocki 
     url: https://lzabrocki.github.io/
-    affiliation: Paris School of Economics
-    affiliation_url: https://www.parisschoolofeconomics.eu/fr/zabrocki-leo/
+    affiliation: RFF-CMCC EIEE
+    affiliation_url: https://www.eiee.org/
 date: "`r Sys.Date()`"
 output: 
     distill::distill_article:
@@ -41,14 +41,16 @@ body {
 text-align: justify}
 </style>
 
-In this document, we describe the data sources and provide the codebook of the variables. **Should you have any questions, please do not hesitate to contact us at leo.zabrocki@psemail.eu**
+In this document, we describe the data sources and provide the codebook of the variables. 
+
+**Should you have any questions, please do not hesitate to contact us at leo.zabrocki@gmail.com**
 
 # Required Packages and Data Loading
 
-To reproduce exactly the `data_sources_codebook.html` document, we first need to have installed:
+To reproduce exactly the data_sources_codebook.html document, we first need to have installed:
 
 * the [R](https://www.r-project.org/) programming language 
-* [RStudio](https://rstudio.com/), an integrated development environment for R, which will allow you to knit the `data_sources_codebook.Rmd` file and interact with the R code chunks
+* [RStudio](https://rstudio.com/), an integrated development environment for R, which will allow you to knit the data_sources_codebook.Rmd file and interact with the R code chunks
 * the [R Markdown](https://rmarkdown.rstudio.com/) package
 * and the [Distill](https://rstudio.github.io/distill/) package which provides the template for this document. 
 
@@ -92,7 +94,7 @@ The final dataset contains 1376 daily observations for the summers of the 1990-2
 
 ```{r, code_folding="Please show me the code!"}
 data %>%
-  select(yll, heat_wave, humidity_relative:o3, no2) %>%
+  dplyr::select(yll, heat_wave, humidity_relative:o3, no2) %>%
   pivot_longer(cols = everything(.), names_to = "Variable", values_to = "value") %>%
   group_by(Variable) %>%
   summarise(Mean = mean(value),

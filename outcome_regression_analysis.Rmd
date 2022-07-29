@@ -13,8 +13,8 @@ author:
     affiliation_url: https://biostatistics.massgeneral.org/faculty/marie-abele-bind-phd/
   - name: Léo Zabrocki 
     url: https://lzabrocki.github.io/
-    affiliation: Paris School of Economics
-    affiliation_url: https://www.parisschoolofeconomics.eu/fr/zabrocki-leo/
+    affiliation: RFF-CMCC EIEE
+    affiliation_url: https://www.eiee.org/
 date: "`r Sys.Date()`"
 output: 
     distill::distill_article:
@@ -38,14 +38,17 @@ body {
 text-align: justify}
 </style>
 
-In this document, we provide all steps and R codes required to analyse the effect of heat waves on the number of years of life lost (YLL ) using an outcome regression approach. This is often the standard procedure followed by researchers in environmental epidemiology: covariates balance is not discussed and confounding variables are adjusted for with a multivariate regression model. **Should you have any questions, need help to reproduce the analysis or find coding errors, please do not hesitate to contact us at leo.zabrocki@psemail.eu**.
+In this document, we provide all steps and R codes required to analyse the effect of heat waves on the number of years of life lost (YLL ) using an outcome regression approach. This is often the standard procedure followed by researchers in environmental epidemiology: covariates balance is not discussed and confounding variables are adjusted for with a multivariate regression model. 
+
+
+**Should you have any questions, need help to reproduce the analysis or find coding errors, please do not hesitate to contact us at leo.zabrocki@gmail.com**.
 
 # Required Packages
 
-To reproduce exactly the `outcome_regression_analysis.html` document, we first need to have installed:
+To reproduce exactly the outcome_regression_analysis.html document, we first need to have installed:
 
 * the [R](https://www.r-project.org/) programming language 
-* [RStudio](https://rstudio.com/), an integrated development environment for R, which will allow you to knit the `outcome_regression_analysis.Rmd` file and interact with the R code chunks
+* [RStudio](https://rstudio.com/), an integrated development environment for R, which will allow you to knit the outcome_regression_analysis.Rmd file and interact with the R code chunks
 * the [R Markdown](https://rmarkdown.rstudio.com/) package
 * and the [Distill](https://rstudio.github.io/distill/) package which provides the template for this document. 
 
@@ -61,7 +64,7 @@ library(Cairo) # for printing custom police of graphs
 library(DT) # for displaying the data as tables
 ```
 
-We finally load our custom `ggplot2` theme for graphs:
+We finally load our custom **ggplot2** theme for graphs:
 
 ```{r}
 # load ggplot custom theme
@@ -140,7 +143,7 @@ output_crude_regression <- data %>%
   lm(yll ~ heat_wave, data = .) %>%
   tidy(., conf.int = TRUE) %>%
   filter(term == "heat_wave") %>%
-  select(term, estimate, conf.low, conf.high) %>%
+  dplyr::select(term, estimate, conf.low, conf.high) %>%
   mutate_at(vars(estimate:conf.high), ~ round(., 0))
 
 # display output
@@ -175,7 +178,7 @@ output_adjusted_regression <- data %>%
      data = .) %>%
   tidy(., conf.int = TRUE) %>%
   filter(term == "heat_wave") %>%
-  select(term, estimate, conf.low, conf.high) %>%
+  dplyr::select(term, estimate, conf.low, conf.high) %>%
   mutate_at(vars(estimate:conf.high), ~ round(., 0)) 
 
 # display output

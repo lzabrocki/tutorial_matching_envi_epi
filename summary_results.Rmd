@@ -13,8 +13,8 @@ author:
     affiliation_url: https://biostatistics.massgeneral.org/faculty/marie-abele-bind-phd/
   - name: Léo Zabrocki 
     url: https://lzabrocki.github.io/
-    affiliation: Paris School of Economics
-    affiliation_url: https://www.parisschoolofeconomics.eu/fr/zabrocki-leo/
+    affiliation: RFF-CMCC EIEE
+    affiliation_url: https://www.eiee.org/
 date: "`r Sys.Date()`"
 output: 
     distill::distill_article:
@@ -41,14 +41,16 @@ body {
 text-align: justify}
 </style>
 
-In this document, we display the results of the three matching procedures we implemented. **Should you have any questions, need help to reproduce the analysis or find coding errors, please do not hesitate to contact us at leo.zabrocki@psemail.eu**.
+In this document, we display the results of the three matching procedures we implemented. 
+
+**Should you have any questions, need help to reproduce the analysis or find coding errors, please do not hesitate to contact us at leo.zabrocki@gmail.com**.
 
 # Required Packages and Data Loading
 
-To reproduce exactly the `summary_results.html` document, we first need to have installed:
+To reproduce exactly the summary_results.html document, we first need to have installed:
 
 * the [R](https://www.r-project.org/) programming language 
-* [RStudio](https://rstudio.com/), an integrated development environment for R, which will allow you to knit the `summary_results.Rmd` file and interact with the R code chunks
+* [RStudio](https://rstudio.com/), an integrated development environment for R, which will allow you to knit the summary_results.Rmd file and interact with the R code chunks
 * the [R Markdown](https://rmarkdown.rstudio.com/) package
 * and the [Distill](https://rstudio.github.io/distill/) package which provides the template for this document. 
 
@@ -62,7 +64,7 @@ library(tidyverse) # for data manipulation and visualization
 library(Cairo) # for printing custom police of graphs
 ```
 
-We load our custom `ggplot2` theme for graphs:
+We load our custom **ggplot2** theme for graphs:
 
 ```{r}
 # load ggplot custom theme
@@ -104,15 +106,14 @@ data_cov_balance <- data_cov_balance %>%
   )
 
 # clean data for summary statistics
-data_cm_cpm <- data_cov_balance %>%
-  filter(matching_procedure %in% c("Coarsened Exact Matching", "Constrained Pair Matching")) %>%
+data_cm_card <- data_cov_balance %>%
+  filter(matching_procedure %in% c("Coarsened Exact Matching", "Cardinality Matching")) %>%
   filter(sample == "Matched Data") %>%
-  select(var, type, stat, matching_procedure)
+  dplyr::select(var, type, stat, matching_procedure)
 
 data_initial <- data_cov_balance %>%
-  filter(matching_procedure == "Coarsened Exact Matching" &
-           sample == "Initial Data") %>%
-  select(-matching_procedure) %>%
+  filter(matching_procedure == "Coarsened Exact Matching" & sample == "Initial Data") %>%
+  dplyr::select(-matching_procedure) %>%
   rename(matching_procedure = sample)
 
 data_ps <- data_cov_balance %>%
@@ -123,11 +124,11 @@ data_ps <- data_cov_balance %>%
       "Propensity Score Matching without a Caliper",
       "Propensity Score Matching with a 0.5 SD Caliper"
     )) %>%
-  select(-sample)
+  dplyr::select(-sample)
 
 # bind clean data
 data_cov_balance <- bind_rows(data_initial, data_ps) %>%
-  bind_rows(., data_cm_cpm)
+  bind_rows(., data_cm_card)
 ```
 
 We compute summary statistics on balance for continuous variables:
@@ -148,13 +149,16 @@ data_cov_balance %>%
       "Propensity Score Matching without a Caliper",
       "Propensity Score Matching with a 0.5 SD Caliper",
       "Coarsened Exact Matching",
-      "Constrained Pair Matching"
+      "Cardinality Matching"
     )
   ) %>%
   arrange(matching_procedure) %>%
   rename("Matching Procedure" = matching_procedure) %>%
   kable(., align = c("l", "c", "c"))
 ```
+
+We can see that cardinality matching is the most effective procedure to reduce imbalance for continuous covariates.
+
 
 We compute summary statistics on balance for binary variables:
 
@@ -174,13 +178,15 @@ data_cov_balance %>%
       "Propensity Score Matching without a Caliper",
       "Propensity Score Matching with a 0.5 SD Caliper",
       "Coarsened Exact Matching",
-      "Constrained Pair Matching"
+      "Cardinality Matching"
     )
   ) %>%
   arrange(matching_procedure) %>%
   rename("Matching Procedure" = matching_procedure) %>%
   kable(., align = c("l", "c", "c"))
 ```
+
+Similarly, cardinality matching is also the most effective procedure to reduce imbalance for discrete covariates.
 
 # Analysis Results
 
@@ -208,7 +214,7 @@ We display below the summary of results in a table:
 data_analysis_results %>%
   mutate("Width of CI" = conf.high - conf.low ,
          "95% CI" = paste(paste0("(", conf.low, ";"),  paste0(conf.high, ")"))) %>%
-  select(procedure, sample_size, estimate, `95% CI`, `Width of CI`) %>%
+  dplyr::select(procedure, sample_size, estimate, `95% CI`, `Width of CI`) %>%
   rename("Procedure" = procedure,
          "Sample Size" = sample_size,
          "Estimate" = estimate) %>%
@@ -223,8 +229,10 @@ data_analysis_results %>%
       "Propensity Score with a 0.5 SD Caliper and with Covariates Adjustment",
       "Coarsened Matching without Covariates Adjustment",
       "Coarsened Matching with Covariates Adjustment",
-      "Constrained Pair Matching without Covariates Adjustment",
-      "Constrained Pair Matching with Covariates Adjustment"
+      "Cardinality Matching without Covariates Adjustment",
+      "Cardinality Matching with Covariates Adjustment",
+      "Cardinality Re-Matching without Covariates Adjustment",
+      "Cardinality Re-Matching with Covariates Adjustment"
     )
   ) %>%
   arrange(Procedure) %>%
@@ -236,13 +244,13 @@ We display below the summary of results in a graph:
 ```{r, echo = FALSE, fig.width = 10, fig.height = 4, layout="l-body-outset", code_folding="Please show me the code!"}
 # add column for stripes
 data_analysis_results <- data_analysis_results %>%
-  mutate(group_index = rep(1:5, each = 2), 
+  mutate(group_index = rep(1:6, each = 2), 
          stripe = ifelse((group_index %% 2) == 0, "Grey", "White"))
 
 # make the graph
 graph_results_ci <-
   data_analysis_results %>%
-    mutate(
+  mutate(
     procedure = fct_relevel(
       procedure,
       "Outcome Regression Model without Covariates Adjustment",
@@ -253,8 +261,10 @@ graph_results_ci <-
       "Propensity Score with a 0.5 SD Caliper and with Covariates Adjustment",
       "Coarsened Matching without Covariates Adjustment",
       "Coarsened Matching with Covariates Adjustment",
-      "Constrained Pair Matching without Covariates Adjustment",
-      "Constrained Pair Matching with Covariates Adjustment"
+      "Cardinality Matching without Covariates Adjustment",
+      "Cardinality Matching with Covariates Adjustment",
+      "Cardinality Re-Matching without Covariates Adjustment",
+      "Cardinality Re-Matching with Covariates Adjustment"
     )
   ) %>%
   ggplot(.,
@@ -276,7 +286,7 @@ graph_results_ci <-
   scale_x_continuous(breaks = scales::pretty_breaks(n = 10)) +
   scale_fill_manual(values = c('gray86', "white")) +
   guides(fill = FALSE) +
-  ylab("") + xlab("Estimates for Heat Waves Effects on YLL") +
+  ylab("") + xlab("Estimates for Heat Wave Effects on YLL") +
   theme_tufte() +
   theme(axis.ticks.y = element_blank())
 
@@ -299,4 +309,7 @@ ggsave(
   device = cairo_pdf
 )
 ```
+
+Overall, all matching procedures lead to less precise estimates than the outcome regression model with covariates adjustment: the width of matching 95% confidence interval ranges from 253 YLL (for cardinality re-matching  with covariates adjustment) up to 306 YLL (for propensity score matching with a 0.5 SD caliper). Matching point estimates are relatively similar to the point estimate of +239 YLL found with an outcome regression model with covariates adjustment: matching point estimates vary from +194 YLL (for cardinality matching without covariates adjustment) up to +297 YLL (for coarsened matching with covariates adjustment). Of course, we directly cannot compare the values of point estimates as each rely on a different sample.
+
 

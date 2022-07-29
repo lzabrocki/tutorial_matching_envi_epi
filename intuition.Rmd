@@ -13,8 +13,8 @@ author:
     affiliation_url: https://biostatistics.massgeneral.org/faculty/marie-abele-bind-phd/
   - name: Léo Zabrocki 
     url: https://lzabrocki.github.io/
-    affiliation: Paris School of Economics
-    affiliation_url: https://www.parisschoolofeconomics.eu/fr/zabrocki-leo/
+    affiliation: RFF-CMCC EIEE
+    affiliation_url: https://www.eiee.org/
 date: "`r Sys.Date()`"
 output: 
     distill::distill_article:
@@ -38,14 +38,16 @@ body {
 text-align: justify}
 </style>
 
-In this document, we explain why it is very important to check covariates balance and the common support of the data in observational studies. We illustrate these two issues by adapting an example from [Jennifer Hill (2011)](https://www.tandfonline.com/doi/abs/10.1198/jcgs.2010.08162). We simulate a fake dataset on the effects of heat waves on Years of Life Lost (YLL) where covariates are imbalanced and their distribution only partially overlap. **Should you have any questions, need help to reproduce the analysis or find coding errors, please do not hesitate to contact us at leo.zabrocki@psemail.eu**.
+In this document, we explain why it is very important to check covariates balance and the common support of the data in observational studies. We illustrate these two issues by adapting an example from [Jennifer Hill (2011)](https://www.tandfonline.com/doi/abs/10.1198/jcgs.2010.08162). We simulate a fake dataset on the effects of heat waves on Years of Life Lost (YLL) where covariates are imbalanced and their distribution only partially overlap. 
+
+**Should you have any questions, need help to reproduce the analysis or find coding errors, please do not hesitate to contact us at leo.zabrocki@gmail.com**.
 
 # Required Packages and Data Loading
 
-To reproduce exactly the `intuition.html` document, we first need to have installed:
+To reproduce exactly the intuition.html document, we first need to have installed:
 
 * the [R](https://www.r-project.org/) programming language 
-* [RStudio](https://rstudio.com/), an integrated development environment for R, which will allow you to knit the `intuition.Rmd` file and interact with the R code chunks
+* [RStudio](https://rstudio.com/), an integrated development environment for R, which will allow you to knit the intuition.Rmd file and interact with the R code chunks
 * the [R Markdown](https://rmarkdown.rstudio.com/) package
 * and the [Distill](https://rstudio.github.io/distill/) package which provides the template for this document. 
 
@@ -62,7 +64,7 @@ library(Cairo) # for printing custom police of graphs
 library(DT) # for building nice table
 ```
 
-We load our custom `ggplot2` theme for graphs:
+We load our custom **ggplot2** theme for graphs:
 
 ```{r}
 # load ggplot custom theme
@@ -125,9 +127,7 @@ data %>%
 A naive outcome regression analysis may recover a biased estimate of the effect of heat waves on YLL if:
 
 * the distributions of confounders are imbalanced, *i.e.*,  they are different for days with heat waves compared to days without heat waves. For instance, the lag of ozone concentrations can be on average higher for treated days than control days. This will make the analysis more dependent on the model used to adjust for confounding variables.
-* the common support of the data is , *i.e.*, there are some treated or c The analysis will be partly based on model extrapolation: if the model is 
-
-the lag of ozone is balanced across days with and without heat waves:
+* the common support of the data is , *i.e.*, there are some treated or c The analysis will be partly based on model extrapolation: if the model is the lag of ozone is balanced across days with and without heat waves:
 
 ```{r, fig.width=6, fig.height=4, code_folding="Please show me the code!"}
 # make the graph
@@ -255,7 +255,7 @@ Fist, we proceed with an outcome regression approach. In a first model, we simpl
 lm(y_obs ~ heat_wave + o3_lag, data = data) %>%
   tidy(., conf.int = TRUE) %>%
   filter(term == "heat_wave") %>%
-  select(term, estimate, conf.low, conf.high) %>%
+  dplyr::select(term, estimate, conf.low, conf.high) %>%
   mutate_at(vars(estimate:conf.high), ~ round(., 0)) %>%
   rename(
     "Term" = term,
@@ -272,7 +272,7 @@ This outcome regression approach does not recover the value of any of the causal
 lm(y_obs ~ heat_wave + o3_lag + I(o3_lag^2), data = data) %>%
   tidy(., conf.int = TRUE) %>%
   filter(term == "heat_wave") %>%
-  select(term, estimate, conf.low, conf.high) %>%
+  dplyr::select(term, estimate, conf.low, conf.high) %>%
   mutate_at(vars(estimate:conf.high), ~ round(., 0)) %>%
   rename(
     "Term" = term,
@@ -340,7 +340,7 @@ The true value of the causal effect of heat waves is equal to +`r true_effect_ma
 lm(y_obs ~ heat_wave + o3_lag, data = data_ps) %>%
   tidy(., conf.int = TRUE) %>%
   filter(term == "heat_wave") %>%
-  select(term, estimate, conf.low, conf.high) %>%
+  dplyr::select(term, estimate, conf.low, conf.high) %>%
   mutate_at(vars(estimate:conf.high), ~ round(., 0)) %>%
   rename(
     "Term" = term,
@@ -357,7 +357,7 @@ Our estimate is nearly equal to the true value of the causal effect! However, it
 lm(y_obs ~ heat_wave + o3_lag + I(o3_lag^2), data = data_ps) %>%
   tidy(., conf.int = TRUE) %>%
   filter(term == "heat_wave") %>%
-  select(term, estimate, conf.low, conf.high) %>%
+  dplyr::select(term, estimate, conf.low, conf.high) %>%
   mutate_at(vars(estimate:conf.high), ~ round(., 0)) %>%
   rename(
     "Term" = term,

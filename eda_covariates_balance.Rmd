@@ -157,7 +157,7 @@ On this graph, we can see that the relative humidity and the lags of O$_{3}$ are
 ```{r, fig.width = 9, fig.height = 3, code_folding="Please show me the code!"}
 # reshape the data into long
 data_continuous_cov <- data %>%
-  select(heat_wave, humidity_relative, o3_lag_1:o3_lag_3, no2_lag_1:no2_lag_3) %>%
+  dplyr::select(heat_wave, humidity_relative, o3_lag_1:o3_lag_3, no2_lag_1:no2_lag_3) %>%
   pivot_longer(cols = -c(heat_wave),
                names_to = "variable",
                values_to = "value") %>%
@@ -178,7 +178,7 @@ data_continuous_cov <- data %>%
       ifelse(str_detect(variable, "lag_3"), "Lag 3", .)
   ) %>%
   mutate(time = fct_relevel(time, "Lag 3", "Lag 2", "Lag 1", "Lag 0")) %>%
-  select(heat_wave, covariate_name, time, value)
+  dplyr::select(heat_wave, covariate_name, time, value)
 
 # compute absolute difference in  means
 data_abs_difference <- data_continuous_cov %>%
@@ -192,13 +192,13 @@ data_sd <-  data_continuous_cov %>%
   group_by(covariate_name, time, heat_wave) %>%
   summarise(sd_treatment = sd(value, na.rm = TRUE)) %>%
   ungroup() %>%
-  select(covariate_name, time, sd_treatment)
+  dplyr::select(covariate_name, time, sd_treatment)
 
 # compute standardized differences
 data_standardized_difference <-
   left_join(data_abs_difference, data_sd, by = c("covariate_name", "time")) %>%
   mutate(standardized_difference = abs_difference / sd_treatment) %>%
-  select(-c(abs_difference, sd_treatment))
+  dplyr::select(-c(abs_difference, sd_treatment))
 
 # make the graph
 graph_std_diff_continuous_cov <- ggplot(data_standardized_difference, aes(y = covariate_name, x = standardized_difference)) +
@@ -245,7 +245,7 @@ For calendar variables such as the day of the week, the month and the year, we e
 ```{r, fig.width=10, fig.height=5, code_folding="Please show me the code!"}
 # compute the proportions of observations belonging to each wday by treatment status
 data_weekday <- data %>%
-  select(weekday, heat_wave) %>%
+  dplyr::select(weekday, heat_wave) %>%
   mutate(weekday = str_to_title(weekday)) %>%
   pivot_longer(.,-heat_wave) %>%
   group_by(name, heat_wave, value) %>%
@@ -307,7 +307,7 @@ On this graph, we can see that there are some differences (in percentage points)
 ```{r, fig.width=8, fig.height=4, code_folding="Please show me the code!"}
 # compute the proportions of observations belonging to each month by treatment status
 data_month <- data %>%
-  select(month, heat_wave) %>%
+  dplyr::select(month, heat_wave) %>%
   mutate(month = str_to_title(month)) %>%
   mutate(month = fct_relevel(month,
                              "June",
@@ -356,7 +356,7 @@ We also plot the same graph but for the year variable:
 ```{r, fig.width=10, fig.height=5, code_folding="Please show me the code!"}
 # compute the proportions of observations belonging to each year by treatment status
 data_year <- data %>%
-  select(year, heat_wave) %>%
+  dplyr::select(year, heat_wave) %>%
   pivot_longer(.,-heat_wave) %>%
   group_by(name, heat_wave, value) %>%
   summarise(n = n()) %>%
@@ -402,7 +402,7 @@ To summarize the imbalance for calendar variables, we can finally compute the di
 ```{r}
 # compute differences in proportion
 data_calendar_difference <- data %>%
-  select(heat_wave, weekday, month, year) %>%
+  dplyr::select(heat_wave, weekday, month, year) %>%
   mutate_all( ~ as.character(.)) %>%
   pivot_longer(cols = -c(heat_wave),
                names_to = "variable",
@@ -421,7 +421,7 @@ data_calendar_difference <- data %>%
       ifelse(str_detect(variable, "month"), "Month", .) %>%
       ifelse(str_detect(variable, "year"), "Year", .)
   ) %>%
-  select(heat_wave, calendar_variable, value, freq) %>%
+  dplyr::select(heat_wave, calendar_variable, value, freq) %>%
   pivot_wider(names_from = heat_wave, values_from = freq) %>%
   mutate(abs_difference = abs(`Days with Heat Wave` - `Days without Heat Wave`)) %>%
   # reoder the values of variable for the graph
@@ -482,7 +482,7 @@ We display in the table below the values of the standardized mean differences by
 
 ```{r, code_folding="Please show me the code!"}
 data_calendar_difference %>%
-  select(calendar_variable, value, abs_difference) %>%
+  dplyr::select(calendar_variable, value, abs_difference) %>%
   rename("Calendard Variable" = "calendar_variable", "Value" = "value", "Absolue Difference in % Points" = "abs_difference") %>%
   kable(., align = c("l", "l", "c"))
 ```

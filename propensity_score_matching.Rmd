@@ -13,8 +13,8 @@ author:
     affiliation_url: https://biostatistics.massgeneral.org/faculty/marie-abele-bind-phd/
   - name: Léo Zabrocki 
     url: https://lzabrocki.github.io/
-    affiliation: Paris School of Economics
-    affiliation_url: https://www.parisschoolofeconomics.eu/fr/zabrocki-leo/
+    affiliation: RFF-CMCC EIEE
+    affiliation_url: https://www.eiee.org/
 date: "`r Sys.Date()`"
 output: 
     distill::distill_article:
@@ -41,14 +41,16 @@ body {
 text-align: justify}
 </style>
 
-In this document, we provide all steps and R codes required to estimate the effect of heat waves of the number of years of life lost (YLL) using propensity score matching. The implementation is done with the fantastic package [MatchIt](https://kosukeimai.github.io/MatchIt/index.html): do not hesitate to explore its very well-made documentation. We also rely on the [cobalt](https://cran.r-project.org/web/packages/cobalt/vignettes/cobalt.html) package for checking covariate balance. **Should you have any questions, need help to reproduce the analysis or find coding errors, please do not hesitate to contact us at leo.zabrocki@psemail.eu**.
+In this document, we provide all steps and R codes required to estimate the effect of heat waves of the number of years of life lost (YLL) using propensity score matching. The implementation is done with the fantastic package [MatchIt](https://kosukeimai.github.io/MatchIt/index.html): do not hesitate to explore its very well-made documentation. We also rely on the [cobalt](https://cran.r-project.org/web/packages/cobalt/vignettes/cobalt.html) package for checking covariate balance.
+
+**Should you have any questions, need help to reproduce the analysis or find coding errors, please do not hesitate to contact us at leo.zabrocki@gmail.com**.
 
 # Required Packages and Data Loading
 
-To reproduce exactly the `propensity_score_matching.html` document, we first need to have installed:
+To reproduce exactly the propensity_score_matching.html document, we first need to have installed:
 
 * the [R](https://www.r-project.org/) programming language 
-* [RStudio](https://rstudio.com/), an integrated development environment for R, which will allow you to knit the `propensity_score_matching.Rmd` file and interact with the R code chunks
+* [RStudio](https://rstudio.com/), an integrated development environment for R, which will allow you to knit the propensity_score_matching.Rmd file and interact with the R code chunks
 * the [R Markdown](https://rmarkdown.rstudio.com/) package
 * and the [Distill](https://rstudio.github.io/distill/) package which provides the template for this document. 
 
@@ -68,7 +70,7 @@ library(Cairo) # for printing custom police of graphs
 library(DT) # for displaying the data as tables
 ```
 
-We load our custom `ggplot2` theme for graphs:
+We load our custom **ggplot2** theme for graphs:
 
 ```{r}
 # load ggplot custom theme
@@ -397,7 +399,7 @@ We finally save the data on covariates balance in the `3.outputs/1.data/covariat
 graph_love_plot_ps_0.5[["data"]] %>%
   rename_all(tolower) %>%
   mutate(matching_procedure = "Propensity Score Matching") %>%
-  select(-on.border) %>%
+  dplyr::select(-on.border) %>%
   saveRDS(
     .,
     here::here(
@@ -437,7 +439,7 @@ results_ps_inf_caliper <- tidy(coeftest(
 ),
 conf.int = TRUE) %>%
   filter(term == "heat_wave") %>%
-  select(term, estimate, conf.low, conf.high) %>%
+  dplyr::select(term, estimate, conf.low, conf.high) %>%
   mutate_at(vars(estimate:conf.high), ~ round(., 0))
 
 # display results
@@ -470,7 +472,7 @@ results_ps_inf_caliper_w_cov <- tidy(coeftest(
 ),
 conf.int = TRUE) %>%
   filter(term == "heat_wave") %>%
-  select(term, estimate, conf.low, conf.high) %>%
+  dplyr::select(term, estimate, conf.low, conf.high) %>%
   mutate_at(vars(estimate:conf.high), ~ round(., 0))
 
 # display results
@@ -511,7 +513,7 @@ results_ps_0.5_caliper <- tidy(coeftest(
 ),
 conf.int = TRUE) %>%
   filter(term == "heat_wave") %>%
-  select(term, estimate, conf.low, conf.high) %>%
+  dplyr::select(term, estimate, conf.low, conf.high) %>%
   mutate_at(vars(estimate:conf.high), ~ round(., 0))
 
 # display results
@@ -544,7 +546,7 @@ results_ps_0.5_caliper_w_cov <- tidy(coeftest(
 ),
 conf.int = TRUE) %>%
   filter(term == "heat_wave") %>%
-  select(term, estimate, conf.low, conf.high) %>%
+  dplyr::select(term, estimate, conf.low, conf.high) %>%
   mutate_at(vars(estimate:conf.high), ~ round(., 0))
 
 # display results

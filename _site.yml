@@ -28,8 +28,8 @@ navbar:
           href: propensity_score_matching.html
         - text: "Coarsened Exact Matching"
           href: coarsened_exact_matching.html
-        - text: "Constrained Pair Matching"
-          href: constrained_pair_matching.html
+        - text: "Cardinality Matching"
+          href: cardinality_matching.html
     - text: "Summary"
       href: summary_results.html
 output: distill::distill_article
