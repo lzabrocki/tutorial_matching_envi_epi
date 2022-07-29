@@ -27,7 +27,6 @@ editor_options:
 ```{r, include=FALSE}
 # code chunk option
 knitr::opts_chunk$set(
-  fig.path = "images/",
   echo = TRUE,
   message = FALSE,
   warning = FALSE,
