@@ -159,15 +159,15 @@ data_cov_balance %>%
 We can see that cardinality matching is the most effective procedure to reduce imbalance for continuous covariates.
 
 
-We compute summary statistics on balance for binary variables:
+We compute summary statistics on balance for binary variables (in percentage points):
 
 ```{r, echo = FALSE, layout="l-body-outset"}
 data_cov_balance %>%
   filter(type == "Binary") %>%
   group_by(matching_procedure) %>%
   summarise(
-    "Average of Proportion Differences" = round(mean(stat), 2),
-    "Std. Deviation" = round(sd(stat), 2)
+    "Average of Proportion Differences" = round(mean(stat*100), 1),
+    "Std. Deviation" = round(sd(stat*100), 1)
   ) %>%
   ungroup() %>%
   mutate(
@@ -273,8 +273,8 @@ graph_results_ci <-
          )) +
     geom_rect(
     aes(fill = stripe),
-    ymin = as.numeric(as.factor(data_analysis_results$procedure))-0.495,
-    ymax = as.numeric(as.factor(data_analysis_results$procedure))+0.495,
+    ymin = as.numeric(as.factor(data_analysis_results$procedure))-0.498,
+    ymax = as.numeric(as.factor(data_analysis_results$procedure))+0.498,
     xmin = -Inf,
     xmax = Inf,
     color = NA,
@@ -302,8 +302,8 @@ ggsave(
     "2.graphs",
     "graph_results_ci.pdf"
   ),
-  width = 25,
-  height = 12,
+  width = 20,
+  height = 10,
   units = "cm",
   device = cairo_pdf
 )

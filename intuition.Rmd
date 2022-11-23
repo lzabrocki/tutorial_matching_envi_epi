@@ -1,7 +1,5 @@
 ---
 title: "Intuition for the Importance of Covariates Balance and Common Support"
-description: |
-  Detailled Script.
 author:
   - name: Tarik Benmarhnia
     url: https://profiles.ucsd.edu/tarik.benmarhnia

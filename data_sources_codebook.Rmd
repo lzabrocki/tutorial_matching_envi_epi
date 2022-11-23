@@ -89,17 +89,18 @@ We retrieved air pollution concentrations from the National Air Pollution Survei
 
 ### Data Used in our Tutorial
 
-The final dataset contains 1376 daily observations for the summers of the 1990-2007 period and 23 variables. Over that period, `r sum(data$heat_wave)` occurred. Below are summary statistics for the variables:
+The final dataset contains 1376 daily observations for the summers of the 1990-2007 period and 23 variables. Over that period, `r sum(data$heat_wave)` heat waves occurred. Below are summary statistics for the variables:
 
 ```{r, code_folding="Please show me the code!"}
 data %>%
-  dplyr::select(yll, heat_wave, humidity_relative:o3, no2) %>%
+  dplyr::select(yll, temperature_average, temperature_maximum, humidity_relative:o3, no2) %>%
   pivot_longer(cols = everything(.), names_to = "Variable", values_to = "value") %>%
   group_by(Variable) %>%
   summarise(Mean = mean(value),
             SD = sd(value),
             Min = min(value),
             Max = max(value)) %>%
+  mutate_at(vars(Mean:Max), ~ round(., 1)) %>%
   kable(., align = c("l", "c", "c", "c", "c"))
 ```
 
